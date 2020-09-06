@@ -1,12 +1,77 @@
 <!DOCTYPE html>
 <html lang="{{site.lang}}">
 {% include head.html %}
+
 <body>
-<h1>FUIIII</h1>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-border">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExample05">
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" aria-current="page" href="#">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="container-fluid bg-dark container-border">
+    <div class="row">
+      <div class="col-4 aside-border">
+        <aside>
+          <div class="">
+            <div class="">
+              <a href="/"><img src="https://filipecrespodev.github.io/assets/img/filipe-crespo-avatar.png" alt="Filipe Crespo" height="100px"></a>
+            </div>
+            <div class="" onclick="location.href = '/';">Filipe Crespo</div>
+            <p>Sou Filipe Crespo, tenho 27 anos, nascido em Portugal e criado no Brasil. Já atuei em diversas áreas do mercado brasileiro de TI. Hoje sou desenvolvedor Php, Ruby e JavaScript , além disso me arrisco em projetos com Python, Node e VueJS.</p>
+          </div>
+        </aside>
+        <footer>
+          <section class="">
+            <h3 class="">Contact me</h3>
+            <ul>
+                <li><a href="https://twitter.com/filipecrespodev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="https://facebook.com/filipecrespodev" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li class="github"><a href="http://github.com/filipecrespodev" target="_blank"><i class="fa fa-github"></i></a></li>
+                <li class="linkedin"><a href="https://in.linkedin.com/in/filipescrespo" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                <li class="twitch"><a href="https://twitch.com/filipecrespodev" target="_blank"><i class="fa fa-twitch"></i></a></li>
+            </ul>
+          </section> <!-- End Section Contact -->
+          <div class="copyright">
+            <p>2020 © Filipe Crespo</p>
+          </div>
+        </footer>
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <article class="col-6" style="width: 48%;" onclick="location.href = '/commit-semantico-e-versionamento';">
+            <div class="">
+              <h2 class=""><a href="/commit-semantico-e-versionamento">Commit Semântico e Versionamento</a></h2>
+              <p>Quando estamos começando a desenvolver e salvar nossos projetos em um repositório temos uma dificuldade...</p>
+              <span class="">2020, Apr 12 —</span>
+              <span class="">2 minute read</span>
+            </div>
+          </article>
+          <article class="col-6" style="width: 48%;" onclick="location.href = '/commit-semantico-e-versionamento';">
+            <div class="">
+              <h2 class=""><a href="/commit-semantico-e-versionamento">Como Atualizar um Projeto Forcado?</a></h2>
+              <p>Após termos clonado um projeto para nossa conta do Github ou GitLab o nosso projeto...</p>
+              <span class="">2020, Apr 12 — </span>
+              <span class="">2 minute read</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </main>
+
   <div class="wrapper">
     {{ content }}
   </div>
 
-  {% include analytics.html %}
+  {% include javascripts.html %}
 </body>
 </html>
