@@ -3,75 +3,69 @@
 {% include head.html %}
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-border">
+  <nav class="navbar navbar-expand-md navbar-border">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarsExample05">
-        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
-          </li>
-        </ul>
+      <div>
+        <div class="collapse navbar-collapse navbar-menu" id="navbarsExample05">
+          <a class="" aria-current="page" href="/">Home</a>
+          <a class="" aria-current="page" href="/about">Sobre</a>
+          <a class="" aria-current="page" href="/talks">Palestras</a>
+          <a class="" aria-current="page" href="/contact">Contato</a>
+        </div>
+      </div>
+      <div class="navbar-social">
+        {% include social.html %}
       </div>
     </div>
   </nav>
-  <main class="container-fluid bg-dark container-border">
+
+  <main class="container-fluid container-border">
     <div class="row">
       <div class="col-4 aside-border">
-        <aside>
-          <div class="">
-            <div class="">
+        <aside class="mx-4">
+          <div class="about">
+            <div class="about-picture my-5">
               <a href="/"><img src="https://filipecrespodev.github.io/assets/img/filipe-crespo-avatar.png" alt="Filipe Crespo" height="100px"></a>
             </div>
-            <div class="" onclick="location.href = '/';">Filipe Crespo</div>
-            <p>Sou Filipe Crespo, tenho 27 anos, nascido em Portugal e criado no Brasil. Já atuei em diversas áreas do mercado brasileiro de TI. Hoje sou desenvolvedor Php, Ruby e JavaScript , além disso me arrisco em projetos com Python, Node e VueJS.</p>
+            <h3 class="text-center mb-4">
+              <a href="/about">Filipe Crespo</a>
+            </h3>
+            <!-- <p>Sou Filipe Crespo, tenho 27 anos, nascido em Portugal e criado no Brasil. Já atuei em diversas áreas do mercado brasileiro de TI. Hoje sou desenvolvedor Php, Ruby e JavaScript , além disso me arrisco em projetos com Python, Node e VueJS.</p> -->
+            <pre>
+              <span class="key_color">{</span>
+                <span class="key_color">Idade:</span> <span class="value_color">27 anos,</span>
+                <span class="key_color">Nascido:</span> <span class="value_color">Portugal,</span>
+                <span class="key_color">Empresa:</span> <span class="value_color">Locaweb,</span>
+                <span class="key_color">Skills:</span>  <span class="value_color">[
+                  Php,
+                  Ruby,
+                  JavaScript,
+                  Python,
+                  Docker,
+                ]</span>
+                <span class="key_color">}<span></span>
+            </pre>
           </div>
         </aside>
-        <footer>
-          <section class="">
-            <h3 class="">Contact me</h3>
-            <ul>
-                <li><a href="https://twitter.com/filipecrespodev" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="https://facebook.com/filipecrespodev" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li class="github"><a href="http://github.com/filipecrespodev" target="_blank"><i class="fa fa-github"></i></a></li>
-                <li class="linkedin"><a href="https://in.linkedin.com/in/filipescrespo" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                <li class="twitch"><a href="https://twitch.com/filipecrespodev" target="_blank"><i class="fa fa-twitch"></i></a></li>
-            </ul>
-          </section> <!-- End Section Contact -->
-          <div class="copyright">
-            <p>2020 © Filipe Crespo</p>
+        <footer class="m-5">
+          <div class="text-center">
+            {% include social.html %}
+          </div>
+          <div class="copyright text-center">
+            <small>2020 © Filipe Crespo</small>
           </div>
         </footer>
       </div>
-      <div class="col-8">
-        <div class="row">
-          <article class="col-6" style="width: 48%;" onclick="location.href = '/commit-semantico-e-versionamento';">
-            <div class="">
-              <h2 class=""><a href="/commit-semantico-e-versionamento">Commit Semântico e Versionamento</a></h2>
-              <p>Quando estamos começando a desenvolver e salvar nossos projetos em um repositório temos uma dificuldade...</p>
-              <span class="">2020, Apr 12 —</span>
-              <span class="">2 minute read</span>
-            </div>
-          </article>
-          <article class="col-6" style="width: 48%;" onclick="location.href = '/commit-semantico-e-versionamento';">
-            <div class="">
-              <h2 class=""><a href="/commit-semantico-e-versionamento">Como Atualizar um Projeto Forcado?</a></h2>
-              <p>Após termos clonado um projeto para nossa conta do Github ou GitLab o nosso projeto...</p>
-              <span class="">2020, Apr 12 — </span>
-              <span class="">2 minute read</span>
-            </div>
-          </article>
+      <div class="col-8 content-border">
+        <div class="row justify-content-center">
+          {{ content }}
         </div>
       </div>
     </div>
   </main>
-
-  <div class="wrapper">
-    {{ content }}
-  </div>
-
   {% include javascripts.html %}
 </body>
 </html>

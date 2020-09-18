@@ -4,7 +4,6 @@ title: Como Atualizar um Projeto Forcado?
 permalink: como-atualizar-um-projeto-forcado
 date: 2020-04-12 09:00:44 +0300
 description: Para atualizar um repositório forcado precisamos configurar o upstream com a url do projeto original.
-img: # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [Git, GitHub, GitLab, Fork, Atualizando projeto forcado]
 ---

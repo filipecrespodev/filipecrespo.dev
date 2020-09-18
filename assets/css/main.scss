@@ -3,11 +3,13 @@
 # only Main files contain this front matter, not partials.
 ---
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap');
+
 @import 'variables';
 
 @import 'style';
 
-// @import 'syntax';
+@import 'syntax';
 
 
 @import 'media';

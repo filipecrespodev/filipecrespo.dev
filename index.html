@@ -1,4 +1,25 @@
 ---
 layout: default
 ---
+{% for post in paginator.posts %}
+<article class="col-8" onclick="location.href = '{{post.url | prepend: site.baseurl}}';">
+  <div class="mt-5 article-border">
+    <div class="article-title text-center">
+      <h3><a class="" href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h3>
+    </div>
+    <div class="mx-5">
+      <p class="date mt-2">
+        <small>{{post.date | date: '%B, %Y'}}</small>
+        -
+        <small>{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</small>
+      </p>
+      <p>{{ post.content | strip_html | truncatewords: 25 }}</p>
+    </div>
+    <div style="float: right  ;">
+      <button class="lear_more">Leia mais...</button>
+    </div>
+  </div>
+</article>
+{% endfor %}
 
+{% include pagination.html %}
