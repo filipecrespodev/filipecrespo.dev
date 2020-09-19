@@ -100,7 +100,8 @@ a {
 
 .article-title a{
   text-decoration: none;
-  color: #fff
+  color: #fff;
+  font-size: 20px;
 }
 
 // Footer
@@ -190,7 +191,7 @@ a {
 }
 
 .date {
-   color: #f59999;
+   color: #f43a2e;
 }
 
 footer a {
@@ -205,3 +206,23 @@ footer a {
   color: $color_twitch;
 }
 
+.talks-dates {
+  float: right;
+}
+
+.talks-title a {
+  color: #f43a2e;
+}
+
+.article-tag a {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.hljs {
+  background: #dadada !important;
+  border-radius: 10px;
+}

@@ -4,14 +4,18 @@ description: >
   Já atuei em diversas áreas do mercado brasileiro de TI.
   Hoje sou desenvolvedor Php, Ruby e JavaScript, além disso me arrisco em projetos com Python, Node e VueJS.
 
-permalink: ':title/'
+permalink: /:categories/:title/
 baseurl: ""
-url: "https://filipecrespodev.github.io"
-site-twitter:
+url: "https://filipecrespo.dev"
 
+collections:
+  my_collection:
+    output: true
+    permalink: /:collection/:name
+
+site-twitter:
 author: Filipe Crespo
 author-img: filipe-crespo-avatar.png
-about-author: Sou Filipe Crespo, tenho 27 anos, nascido em Portugal e criado no Brasil. Já atuei em diversas áreas do mercado brasileiro de TI. Hoje sou desenvolvedor Php, Ruby e JavaScript , além disso me arrisco em projetos com Python, Node e VueJS.
 social-twitter: filipecrespodev
 social-facebook: filipecrespodev
 social-github: filipecrespodev
@@ -29,13 +33,13 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-seo-tag
-  - jemoji
   - jekyll-coffeescript
+  - jemoji
 
-paginate: 8
+paginate: 10
 paginate_path: "/page/:num"
 
 lang: pt-BR
 languages: ["pt"]
 
-exclude: ["vender", "Dockerfile", "Docker-composer.yml", "LICENSE"]
+exclude: ["vender", "Dockerfile", "Docker-composer.yml", "LICENSE", "README.md"]

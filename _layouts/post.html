@@ -1,9 +1,38 @@
 ---
 layout: default
 ---
-<article class="article-page">
-  <div class="page-content">
-    {% if page.img %}
+
+<article class="col-8 article-page my-5">
+  <div class="">
+    <div class="wrap-content">
+      <header>
+        <h3>{{page.title}}</h3>
+        <p class="date mt-2"">
+          <small>{{page.date | date: '%m/%Y'}}</small>
+          -
+          <small>{% capture words %}{{ page.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " min de leitura" }}{% endunless %}</small>
+        </p>
+      </header>
+      {{content | markdownify}}
+      <div class="article-footer my-4">
+        <div class="article-share py-3">
+          <span class="mr-2">
+            Compartilhe:
+          </span>
+          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank" class="twitter mr-2"><i class="fa fa-twitter"></i></a>
+          <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+        </div>
+        <div class="article-tag">
+          {% for tag in page.tags %}
+            <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+    <!-- {% if page.img %}
     <div class="page-cover-image">
       <figure>
         <img class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
@@ -11,26 +40,6 @@ layout: default
           <figcaption>{{page.fig-caption}}</figcaption>
         {% endif %}
       </figure>
-    </div> <!-- End Page Cover Image -->
+    </div> 
     {% else %}
-    {% endif %}
-    <div class="wrap-content">
-      <header class="header-page">
-        <h1 class="page-title">{{page.title}}</h1>
-        <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-      </header>
-      {{content | markdownify}}
-      <div class="page-footer">
-        <div class="page-share">
-          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
-          <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
-        </div>
-        <div class="page-tag">
-          {% for tag in page.tags %}
-            <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
-          {% endfor %}
-        </div>
-      </div>
-    </div> <!-- End Wrap Content -->
-  </div> <!-- End Page Content -->
-</article> <!-- End Article Page -->
+    {% endif %} -->

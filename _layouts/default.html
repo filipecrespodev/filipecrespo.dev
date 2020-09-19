@@ -3,7 +3,7 @@
 {% include head.html %}
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-border">
+  <nav class="navbar navbar-expand-md navbar-border sticky-top">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,9 +11,9 @@
       <div>
         <div class="collapse navbar-collapse navbar-menu" id="navbarsExample05">
           <a class="" aria-current="page" href="/">Home</a>
-          <a class="" aria-current="page" href="/about">Sobre</a>
+          <!-- <a class="" aria-current="page" href="/about">Sobre</a> -->
           <a class="" aria-current="page" href="/talks">Palestras</a>
-          <a class="" aria-current="page" href="/contact">Contato</a>
+          <!-- <a class="" aria-current="page" href="/contact">Contato</a> -->
         </div>
       </div>
       <div class="navbar-social">
@@ -46,7 +46,7 @@
                   Python,
                   Docker,
                 ]</span>
-                <span class="key_color">}<span></span>
+              <span class="key_color">}<span></span>
             </pre>
           </div>
         </aside>
@@ -60,7 +60,7 @@
         </footer>
       </div>
       <div class="col-8 content-border">
-        <div class="row justify-content-center">
+        <div class="row mb-5 justify-content-center">
           {{ content }}
         </div>
       </div>

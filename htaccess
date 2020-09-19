@@ -1,0 +1,7 @@
+---
+layout: none
+permalink: .htaccess
+---
+RewriteEngine On
+RewriteCond %{http_host} ^www.filipecrespo.dev [nc]
+RewriteRule ^(.*)$ http://filipecrespo.dev/$1 [r=301,nc]

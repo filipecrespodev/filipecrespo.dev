@@ -7,6 +7,6 @@ ENV LANGUAGE en_US.UTF-8
 WORKDIR /app
 
 ADD Gemfile /app
-# ADD Gemfile.lock /app
+ADD Gemfile.lock /app
 
 RUN bundle install
