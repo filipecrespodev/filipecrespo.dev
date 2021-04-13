@@ -17,5 +17,5 @@ jobs:
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.KEY }}
+          password: ${{ secrets.SERVER_PASSWORD }}
           script: cd /var/www/filipecrespo.dev && git pull && jekyll build
