@@ -1,30 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{site.lang}}">
 {% include head.html %}
-
-<body>
-  <nav class="navbar navbar-expand-md navbar-border sticky-top">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div>
-        <div class="collapse navbar-collapse navbar-menu" id="navbarsExample05">
-          <a class="" aria-current="page" href="/">Home</a>
-          <!-- <a class="" aria-current="page" href="/about">Sobre</a> -->
-          <a class="" aria-current="page" href="/talks">Palestras</a>
-          <!-- <a class="" aria-current="page" href="/contact">Contato</a> -->
-        </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<body style="background-color: blue;">
+  <div class="container-fluid">
+    <nav class="row" style="background-color: black; height: 80px;">
+      <div class="col">
+        <a href="#">Home</a>
+        <a href="/talks.html">Talks</a>
+        <a href="/curriculum">Curriculum</a>
       </div>
-      <div class="navbar-social">
-        {% include social.html %}
+      <div class="col">
+          {% include social.html %}
       </div>
-    </div>
-  </nav>
-
-  <main class="container-fluid container-border">
-    <div class="row">
-      <div class="col-4 aside-border">
+    </nav>
+    <main class="row">
+      <header class="col-4" style="background-color: red; height: max-content;">
         <aside class="mx-4">
           <div class="about">
             <div class="about-picture my-5">
@@ -33,39 +24,47 @@
             <h3 class="text-center mb-4">
               <a href="/about">Filipe Crespo</a>
             </h3>
-            <!-- <p>Sou Filipe Crespo, tenho 27 anos, nascido em Portugal e criado no Brasil. Já atuei em diversas áreas do mercado brasileiro de TI. Hoje sou desenvolvedor Php, Ruby e JavaScript , além disso me arrisco em projetos com Python, Node e VueJS.</p> -->
-            <pre>
-              <span class="key_color">{</span>
-                <span class="key_color">Idade:</span> <span class="value_color">27 anos,</span>
-                <span class="key_color">Nascido:</span> <span class="value_color">Portugal,</span>
-                <span class="key_color">Empresa:</span> <span class="value_color">Locaweb,</span>
-                <span class="key_color">Skills:</span>  <span class="value_color">[
-                  Php,
-                  Ruby,
-                  JavaScript,
-                  Python,
-                  Docker,
-                ]</span>
-              <span class="key_color">}<span></span>
-            </pre>
+            <p>Sou Filipe Crespo, tenho 27 anos, nascido em Portugal e criado no Brasil. Já atuei em diversas áreas do mercado brasileiro de TI. Hoje sou desenvolvedor Php, Ruby e JavaScript , além disso me arrisco em projetos com Python, Node e VueJS.</p>
+            <span class="key_color">{</span>
+            <span class="key_color">Idade:</span> <span class="value_color">27 anos,</span>
+            <span class="key_color">Nascido:</span> <span class="value_color">Portugal,</span>
+            <span class="key_color">Empresa:</span> <span class="value_color">Locaweb,</span>
+            <span class="key_color">Skills:</span>  <span class="value_color">
+              [Php,
+              Ruby,
+              JavaScript,
+              Python,
+              Docker]
+            </span>
+            <span class="key_color">}<span></span>
           </div>
         </aside>
-        <footer class="m-5">
-          <div class="text-center">
-            {% include social.html %}
-          </div>
-          <div class="copyright text-center">
-            <small>2020 © Filipe Crespo</small>
-          </div>
-        </footer>
-      </div>
-      <div class="col-8 content-border">
-        <div class="row mb-5 justify-content-center">
-          {{ content }}
-        </div>
-      </div>
-    </div>
-  </main>
+      </header>
+      <article class="col-8" style="background-color: green;">
+        <section>
+          SECTION 1
+        </section>
+        <section>
+          SECTION 2
+        </section>
+        <section>
+          SECTION 1
+        </section>
+        <section>
+          SECTION 2
+        </section>
+        <section>
+          SECTION 1
+        </section>
+        <section>
+          SECTION 2
+        </section>
+      </article>
+    </main>
+    <footer class="row" style="background-color: pink; height:60px">
+      FOOTER
+    </footer>
+  </div>
   {% include javascripts.html %}
 </body>
 </html>
