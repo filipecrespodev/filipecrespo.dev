@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --retro-bg: #0f0f23;
+  --retro-primary: #00ff41;
+  --retro-secondary: #ff00ff;
+  --retro-accent: #00ffff;
+  --retro-text: #c0c0c0;
+  --retro-border: #00ff41;
+  --sidebar-width: 320px;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  background-color: var(--retro-bg);
+  color: var(--retro-text);
+  line-height: 1.8;
+  font-size: 12px;
+  overflow-x: hidden;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.pixel-border {
+  border: 4px solid var(--retro-border);
+  box-shadow:
+    0 0 10px var(--retro-primary),
+    inset 0 0 10px rgba(0, 255, 65, 0.1);
+  image-rendering: pixelated;
+}
+
+.scanline {
+  position: relative;
+}
+
+.scanline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.glow-text {
+  text-shadow:
+    0 0 5px var(--retro-primary),
+    0 0 10px var(--retro-primary),
+    0 0 15px var(--retro-primary);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 5px var(--retro-primary),
+      0 0 10px var(--retro-primary),
+      0 0 15px var(--retro-primary);
+  }
+  to {
+    text-shadow:
+      0 0 10px var(--retro-primary),
+      0 0 20px var(--retro-primary),
+      0 0 30px var(--retro-primary);
+  }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+button, .btn {
+  font-family: 'Press Start 2P', monospace;
+  background-color: transparent;
+  border: 3px solid var(--retro-primary);
+  color: var(--retro-primary);
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--retro-primary);
+  color: var(--retro-bg);
+  box-shadow: 0 0 20px var(--retro-primary);
+  transform: scale(1.05);
+}
+
+a {
+  color: var(--retro-accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--retro-secondary);
+  text-shadow: 0 0 10px var(--retro-secondary);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--retro-bg);
+  border: 2px solid var(--retro-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--retro-primary);
+  border: 2px solid var(--retro-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--retro-accent);
+}

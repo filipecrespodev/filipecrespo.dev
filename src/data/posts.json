@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Bem-vindo ao meu diário digital",
+    "date": "2025-12-05",
+    "tags": ["inicio", "reflexao", "tech"],
+    "content": [
+      "Hoje decidi criar este espaço digital, um lugar onde posso registrar pensamentos, aprendizados e experiências. Como um save point na minha jornada.",
+      "Este blog tem um visual retro game porque sempre fui apaixonado por jogos clássicos. Aquela estética 8-bit, os pixels, as cores vibrantes... tudo isso me traz nostalgia e inspiração.",
+      "Aqui vou compartilhar sobre desenvolvimento, tecnologia, games, e tudo que me interessa. Sem frescura, apenas conteúdo genuíno."
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Vue 3 + Vite: A combinação perfeita",
+    "date": "2025-12-04",
+    "tags": ["vue", "vite", "frontend"],
+    "content": [
+      "Migrar para Vue 3 com Vite foi uma das melhores decisões técnicas que tomei. A experiência de desenvolvimento é incrivelmente fluida.",
+      "O hot reload é instantâneo, o build é super rápido, e a Composition API torna o código muito mais limpo e reutilizável. É como ter um power-up permanente.",
+      "Para quem está começando com Vue, recomendo fortemente começar direto com Vue 3 e Vite. Não vale a pena perder tempo com webpack configs complexas."
+    ]
+  },
+  {
+    "id": 3,
+    "title": "A arte do código limpo",
+    "date": "2025-12-03",
+    "tags": ["clean-code", "best-practices", "dev"],
+    "content": [
+      "Código limpo não é sobre seguir regras cegamente. É sobre comunicação. Você está escrevendo para outros desenvolvedores (incluindo você no futuro).",
+      "Aprendi que variáveis bem nomeadas valem mais que comentários. Funções pequenas e focadas são mais fáceis de testar e manter. E simplicidade sempre vence complexidade desnecessária.",
+      "Cada refatoração é como polir uma arma no RPG: você fica mais forte para enfrentar os próximos desafios."
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Level up: Aprendendo TypeScript",
+    "date": "2025-12-02",
+    "tags": ["typescript", "javascript", "learning"],
+    "content": [
+      "TypeScript parecia assustador no início. Tipos, interfaces, generics... parecia overengineering. Mas depois que você pega o jeito, não quer mais voltar.",
+      "A sensação de ter o autocomplete te ajudando, de pegar erros em tempo de desenvolvimento, de ter documentação viva no código... é um game changer.",
+      "Minha dica: comece aos poucos. Não precisa tipar tudo perfeitamente desde o início. Use 'any' quando necessário e vá melhorando aos poucos. É um processo."
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Deploy e o sentimento de vitória",
+    "date": "2025-12-01",
+    "tags": ["deploy", "devops", "achievement"],
+    "content": [
+      "Existe algo mágico em fazer deploy de um projeto. É como derrotar o boss final de um jogo. Você vê seu código rodando em produção, acessível para o mundo.",
+      "Hoje em dia, com Vercel, Netlify e outras plataformas, fazer deploy ficou absurdamente fácil. Git push e pronto, seu site está no ar em segundos.",
+      "Mas não se esqueça: deploy não é o fim. É só o começo de uma nova fase. Agora vem monitoramento, otimização, feedback dos usuários... o true endgame."
+    ]
+  }
+]
