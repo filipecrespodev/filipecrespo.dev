@@ -1,22 +1,23 @@
-# 🎮 Filipe Crespo - Retro Blog
+# Filipe Crespo - Blog Pessoal
 
-Um blog pessoal com visual retro game, desenvolvido com Vue 3 + Vite.
+Um blog pessoal minimalista e moderno, desenvolvido com Vue 3 + Vite.
 
 ## ✨ Features
 
-- 🕹️ Design inspirado em jogos retro 8-bit
-- 💚 Paleta de cores neon vibrante
-- 📝 Sistema de posts em formato diário
-- 🎨 Animações e efeitos nostálgicos
-- 📱 Layout responsivo
+- 🎨 Design minimalista e profissional
+- 📝 Sistema de posts com cards interativos
+- 🎯 Grid responsivo adaptável
+- 💡 Leitura focada com layout limpo
+- 📱 Mobile-first e responsivo
 - ⚡ Performance otimizada com Vite
+- 🎭 Transições suaves entre páginas
 
 ## 🚀 Tecnologias
 
 - **Vue 3** - Framework JavaScript progressivo
 - **Vite** - Build tool super rápido
-- **CSS3** - Estilização com tema retro
-- **Press Start 2P** - Fonte pixelada do Google Fonts
+- **CSS3** - Estilização moderna e minimalista
+- **Inter** - Tipografia profissional do Google Fonts
 
 ## 🎯 Estrutura
 
@@ -30,7 +31,7 @@ src/
 │   └── posts.json       # Dados dos posts
 ├── assets/
 │   └── styles/
-│       └── retro.css    # Estilos retro game
+│       └── main.css     # Estilos principais
 ├── App.vue              # Componente principal
 └── main.js              # Entry point
 ```
@@ -82,15 +83,17 @@ Edite o arquivo `src/data/posts.json` e adicione um novo objeto seguindo o forma
 
 ### Cores
 
-Edite as variáveis CSS em `src/assets/styles/retro.css`:
+Edite as variáveis CSS em `src/assets/styles/main.css`:
 
 ```css
 :root {
-  --retro-bg: #0f0f23;
-  --retro-primary: #00ff41;
-  --retro-secondary: #ff00ff;
-  --retro-accent: #00ffff;
-  --retro-text: #c0c0c0;
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8f8f8;
+  --dark-bg: #0a0a0a;
+  --accent-color: #FF5734;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --border-color: #e5e5e5;
 }
 ```
 
@@ -104,4 +107,4 @@ MIT License - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
-> "Press START to continue" 🎮
+Desenvolvido com ❤️ por Filipe Crespo

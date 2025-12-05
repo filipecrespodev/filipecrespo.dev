@@ -1,65 +1,47 @@
 <template>
-  <aside class="sidebar pixel-border">
-    <div class="profile-section">
-      <div class="avatar-container">
-        <div class="avatar">
-          <span class="avatar-text">FC</span>
+  <aside class="sidebar">
+    <div class="sidebar-content">
+      <div class="logo">
+        <h2 class="logo-text">FC</h2>
+      </div>
+
+      <nav class="nav">
+        <a href="#" class="nav-item active">Posts</a>
+        <a href="#" class="nav-item">Sobre</a>
+        <a href="#" class="nav-item">Contato</a>
+      </nav>
+
+      <div class="profile-info">
+        <h3 class="profile-name">Filipe Crespo</h3>
+        <p class="profile-role">Desenvolvedor Full Stack</p>
+        <p class="profile-bio">
+          Apaixonado por tecnologia, código limpo e boas práticas.
+          Compartilhando aprendizados e experiências.
+        </p>
+      </div>
+
+      <div class="social-links">
+        <a href="https://github.com" target="_blank" class="social-link">
+          GitHub
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="social-link">
+          LinkedIn
+        </a>
+        <a href="mailto:contato@filipecrespo.dev" class="social-link">
+          Email
+        </a>
+      </div>
+
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-value">{{ totalPosts }}</div>
+          <div class="stat-label">Posts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ totalViews }}</div>
+          <div class="stat-label">Views</div>
         </div>
       </div>
-
-      <h1 class="name glow-text">Filipe Crespo</h1>
-
-      <div class="status">
-        <span class="status-indicator blink">●</span>
-        <span>ONLINE</span>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="bio-section">
-      <h2 class="section-title">$ whoami</h2>
-      <p class="bio-text">
-        Desenvolvedor apaixonado por tecnologia, games e código.
-        Bem-vindo ao meu diário digital!
-      </p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="stats-section">
-      <h2 class="section-title">$ stats</h2>
-      <div class="stat-item">
-        <span class="stat-label">LEVEL:</span>
-        <span class="stat-value">{{ level }}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">XP:</span>
-        <span class="stat-value">{{ xp }}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">POSTS:</span>
-        <span class="stat-value">{{ totalPosts }}</span>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="links-section">
-      <h2 class="section-title">$ links</h2>
-      <a href="https://github.com" target="_blank" class="link-item">
-        [GITHUB]
-      </a>
-      <a href="https://linkedin.com" target="_blank" class="link-item">
-        [LINKEDIN]
-      </a>
-      <a href="mailto:contato@filipecrespo.dev" class="link-item">
-        [EMAIL]
-      </a>
-    </div>
-
-    <div class="footer">
-      <p>&gt; Press START</p>
     </div>
   </aside>
 </template>
@@ -67,9 +49,8 @@
 <script setup>
 import { ref } from 'vue'
 
-const level = ref(25)
-const xp = ref(9999)
-const totalPosts = ref(42)
+const totalPosts = ref(5)
+const totalViews = ref('2.5k')
 </script>
 
 <style scoped>
@@ -79,136 +60,128 @@ const totalPosts = ref(42)
   top: 0;
   width: var(--sidebar-width);
   height: 100vh;
-  background-color: rgba(15, 15, 35, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 30px 20px;
-  overflow-y: auto;
+  background-color: var(--primary-bg);
+  border-right: 1px solid var(--border-color);
   z-index: 100;
+  overflow-y: auto;
 }
 
-.profile-section {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.avatar-container {
+.sidebar-content {
+  padding: 48px 32px;
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 48px;
 }
 
-.avatar {
-  width: 120px;
-  height: 120px;
-  border: 4px solid var(--retro-primary);
-  background: linear-gradient(135deg, var(--retro-primary) 0%, var(--retro-accent) 100%);
+/* Logo */
+.logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 0 0 20px var(--retro-primary);
 }
 
-.avatar-text {
-  font-size: 48px;
-  color: var(--retro-bg);
-  font-weight: bold;
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
-.name {
-  font-size: 16px;
-  margin-bottom: 15px;
-  color: var(--retro-primary);
-}
-
-.status {
+/* Navigation */
+.nav {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-size: 10px;
-  color: var(--retro-primary);
+  flex-direction: column;
+  gap: 4px;
 }
 
-.status-indicator {
-  font-size: 20px;
-  color: var(--retro-primary);
+.nav-item {
+  padding: 12px 16px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
-.divider {
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--retro-primary),
-    transparent
-  );
-  margin: 20px 0;
+.nav-item:hover {
+  background-color: var(--secondary-bg);
+  color: var(--text-primary);
 }
 
-.section-title {
-  font-size: 12px;
-  color: var(--retro-accent);
-  margin-bottom: 15px;
-  text-shadow: 0 0 10px var(--retro-accent);
+.nav-item.active {
+  background-color: var(--secondary-bg);
+  color: var(--text-primary);
 }
 
-.bio-section {
-  margin-bottom: 20px;
+/* Profile Info */
+.profile-info {
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
 }
 
-.bio-text {
-  font-size: 10px;
-  line-height: 1.8;
-  color: var(--retro-text);
+.profile-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
 }
 
-.stats-section {
-  margin-bottom: 20px;
+.profile-role {
+  font-size: 14px;
+  color: var(--accent-color);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.profile-bio {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social-link {
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding: 8px 0;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.social-link:hover {
+  color: var(--accent-color);
+}
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
 }
 
 .stat-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-size: 10px;
-}
-
-.stat-label {
-  color: var(--retro-text);
+  text-align: center;
 }
 
 .stat-value {
-  color: var(--retro-secondary);
-  text-shadow: 0 0 5px var(--retro-secondary);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
 }
 
-.links-section {
-  margin-bottom: 20px;
-}
-
-.link-item {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 10px;
-  padding: 8px;
-  border: 2px solid var(--retro-primary);
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.link-item:hover {
-  background-color: var(--retro-primary);
-  color: var(--retro-bg);
-  transform: translateX(5px);
-}
-
-.footer {
-  text-align: center;
-  font-size: 10px;
-  color: var(--retro-secondary);
-  margin-top: 30px;
-  animation: blink 1.5s infinite;
+.stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 @media (max-width: 768px) {
@@ -216,6 +189,13 @@ const totalPosts = ref(42)
     position: relative;
     width: 100%;
     height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .sidebar-content {
+    padding: 24px 20px;
+    gap: 32px;
   }
 }
 </style>

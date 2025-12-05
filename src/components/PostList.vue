@@ -1,33 +1,29 @@
 <template>
-  <div class="post-list pixel-border">
+  <div class="post-list">
     <div class="header">
-      <h2 class="title glow-text">$ cat diary.log</h2>
-      <div class="post-count">
-        [ {{ posts.length }} entries ]
-      </div>
+      <h2 class="title">Posts recentes</h2>
+      <p class="subtitle">{{ posts.length }} artigos publicados</p>
     </div>
 
-    <div class="posts-container">
-      <div
+    <div class="posts-grid">
+      <article
         v-for="post in posts"
         :key="post.id"
-        class="post-item"
+        class="post-card"
         @click="$emit('select-post', post)"
       >
-        <div class="post-date">
-          <span class="bracket">[</span>
-          <span class="date-text">{{ formatDate(post.date) }}</span>
-          <span class="bracket">]</span>
-        </div>
-        <h3 class="post-title">
-          <span class="prompt">&gt;</span> {{ post.title }}
-        </h3>
+        <div class="post-date">{{ formatDate(post.date) }}</div>
+        <h3 class="post-title">{{ post.title }}</h3>
+        <p class="post-excerpt">{{ getExcerpt(post.content) }}</p>
         <div class="post-tags">
           <span v-for="tag in post.tags" :key="tag" class="tag">
-            #{{ tag }}
+            {{ tag }}
           </span>
         </div>
-      </div>
+        <div class="post-footer">
+          <span class="read-more">Ler mais →</span>
+        </div>
+      </article>
     </div>
   </div>
 </template>
@@ -46,107 +42,143 @@ const formatDate = (dateString) => {
   const date = new Date(dateString)
   return date.toLocaleDateString('pt-BR', {
     day: '2-digit',
-    month: '2-digit',
+    month: 'short',
     year: 'numeric'
   })
+}
+
+const getExcerpt = (content) => {
+  if (!content || !content.length) return ''
+  const text = content[0]
+  return text.length > 120 ? text.substring(0, 120) + '...' : text
 }
 </script>
 
 <style scoped>
 .post-list {
-  width: 350px;
-  background-color: rgba(15, 15, 35, 0.9);
-  padding: 20px;
-  max-height: calc(100vh - 40px);
-  overflow-y: auto;
-  position: sticky;
-  top: 20px;
+  flex: 1;
+  padding: 0;
 }
 
 .header {
-  margin-bottom: 20px;
-  border-bottom: 2px solid var(--retro-primary);
-  padding-bottom: 15px;
+  margin-bottom: 48px;
 }
 
 .title {
-  font-size: 14px;
-  color: var(--retro-primary);
-  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
 }
 
-.post-count {
-  font-size: 10px;
-  color: var(--retro-accent);
-  text-align: right;
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
 }
 
-.posts-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
 }
 
-.post-item {
-  padding: 15px;
-  border: 2px solid var(--retro-primary);
-  background-color: rgba(0, 255, 65, 0.05);
+.post-card {
+  background: var(--primary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 32px;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.post-item:hover {
-  background-color: rgba(0, 255, 65, 0.15);
-  transform: translateX(5px);
-  box-shadow: 0 0 15px var(--retro-primary);
+.post-card:hover {
+  border-color: var(--text-secondary);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
 }
 
 .post-date {
-  font-size: 9px;
-  color: var(--retro-text);
-  margin-bottom: 8px;
-}
-
-.bracket {
-  color: var(--retro-accent);
-}
-
-.date-text {
-  color: var(--retro-secondary);
-  margin: 0 5px;
+  font-size: 13px;
+  color: var(--text-light);
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-transform: capitalize;
 }
 
 .post-title {
-  font-size: 11px;
-  color: var(--retro-primary);
-  margin-bottom: 10px;
-  line-height: 1.6;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
-.prompt {
-  color: var(--retro-accent);
-  margin-right: 5px;
+.post-excerpt {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  flex: 1;
 }
 
 .post-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 20px;
 }
 
 .tag {
-  font-size: 8px;
-  color: var(--retro-secondary);
-  border: 1px solid var(--retro-secondary);
-  padding: 3px 8px;
-  background-color: rgba(255, 0, 255, 0.1);
+  font-size: 12px;
+  color: var(--text-secondary);
+  background-color: var(--secondary-bg);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.read-more {
+  font-size: 14px;
+  color: var(--accent-color);
+  font-weight: 600;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.post-card:hover .read-more {
+  transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
-  .post-list {
-    width: 100%;
-    position: relative;
-    top: 0;
+  .posts-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .post-card {
+    padding: 24px;
   }
 }
 </style>
