@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bunx lefthook:*)",
+      "Bash(bun run format:*)",
+      "Bash(git add:*)",
+      "WebFetch(domain:pt.linkedin.com)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}

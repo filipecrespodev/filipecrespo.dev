@@ -1,0 +1,44 @@
+{
+  "name": "filipecrespo-dev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "lint-staged": {
+    "*.{js,ts,vue,mjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.9.0",
+    "@nuxt/eslint": "1.12.1",
+    "@nuxt/fonts": "0.12.1",
+    "@nuxt/hints": "1.0.0-alpha.3",
+    "@nuxt/icon": "2.1.0",
+    "@nuxt/image": "2.0.0",
+    "@nuxt/scripts": "0.13.1",
+    "@nuxt/test-utils": "3.21.0",
+    "@nuxt/ui": "^4.2.1",
+    "@unhead/vue": "^2.0.3",
+    "better-sqlite3": "^12.5.0",
+    "eslint": "^9.0.0",
+    "nuxt": "^4.2.2"
+  },
+  "devDependencies": {
+    "lefthook": "^2.0.11",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4"
+  }
+}
