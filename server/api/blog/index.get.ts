@@ -1,22 +1,21 @@
 import matter from 'gray-matter'
-import { readdir, readFile } from 'node:fs/promises'
-import { join } from 'node:path'
 
 export default defineEventHandler(async () => {
   try {
-    // Usar filesystem diretamente (funciona tanto em dev quanto em produção com serverAssets)
-    const contentDir = join(process.cwd(), 'content', 'blog')
+    // Usar useStorage do Nitro para acessar serverAssets (funciona em dev e produção)
+    const storage = useStorage('assets:content')
 
-    const files = await readdir(contentDir)
-    const mdFiles = files.filter(file => file.endsWith('.md'))
+    // Listar todos os arquivos no diretório blog
+    const keys = await storage.getKeys('blog')
+    const mdKeys = keys.filter(key => key.endsWith('.md'))
 
     const posts = await Promise.all(
-      mdFiles.map(async (file) => {
-        const filePath = join(contentDir, file)
-        const fileContent = await readFile(filePath, 'utf-8')
+      mdKeys.map(async (key) => {
+        const fileContent = await storage.getItem(key) as string
         const { data } = matter(fileContent)
 
-        const slug = file.replace('.md', '')
+        // Extrair slug do caminho (ex: blog/introducao-ao-nuxt.md -> introducao-ao-nuxt)
+        const slug = key.replace('blog/', '').replace('.md', '')
 
         return {
           _path: `/blog/${slug}`,

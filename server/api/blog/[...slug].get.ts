@@ -1,7 +1,5 @@
 import matter from 'gray-matter'
 import { marked } from 'marked'
-import { readFile } from 'node:fs/promises'
-import { join } from 'node:path'
 
 export default defineEventHandler(async (event) => {
   const slug = getRouterParam(event, 'slug')
@@ -14,11 +12,19 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    // Usar filesystem diretamente (funciona tanto em dev quanto em produção com serverAssets)
-    const contentDir = join(process.cwd(), 'content', 'blog')
-    const filePath = join(contentDir, `${slug}.md`)
+    // Usar useStorage do Nitro para acessar serverAssets (funciona em dev e produção)
+    const storage = useStorage('assets:content')
+    const filePath = `blog/${slug}.md`
 
-    const fileContent = await readFile(filePath, 'utf-8')
+    const fileContent = await storage.getItem(filePath) as string
+
+    if (!fileContent) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Post not found'
+      })
+    }
+
     const { data, content } = matter(fileContent)
 
     // Converter markdown para HTML
