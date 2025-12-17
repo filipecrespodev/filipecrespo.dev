@@ -1,9 +1,10 @@
 <script setup lang="ts">
 const route = useRoute()
+const slug = route.params.slug?.[0] || ''
 
-const { data: post } = await useAsyncData(`blog-${route.path}`, () =>
-  queryContent(route.path).findOne()
-)
+const { data: post } = await useAsyncData(`blog-${slug}`, async () => {
+  return await $fetch(`/api/blog/${slug}`)
+})
 
 if (!post.value) {
   throw createError({
@@ -32,12 +33,9 @@ const formatDate = (dateString: string) => {
 }
 
 // Navegação entre posts
-const { data: allPosts } = await useAsyncData('all-blog-posts', () =>
-  queryContent('/blog')
-    .sort({ publishedAt: -1 })
-    .only(['_path', 'title'])
-    .find()
-)
+const { data: allPosts } = await useAsyncData('all-blog-posts', async () => {
+  return await $fetch('/api/blog')
+})
 
 const currentIndex = allPosts.value?.findIndex(p => p._path === post.value?._path) ?? -1
 const prevPost = currentIndex > 0 ? allPosts.value?.[currentIndex - 1] : null
@@ -65,7 +63,7 @@ const nextPost = currentIndex < (allPosts.value?.length ?? 0) - 1 ? allPosts.val
         </span>
         <span class="meta-item">
           <Icon name="heroicons-solid:clock" />
-          {{ calculateReadingTime(post.body?.children?.map((c: any) => c.children?.map((cc: any) => cc.value).join(' ')).join(' ') || '') }} min de leitura
+          {{ calculateReadingTime(post.rawContent || '') }} min de leitura
         </span>
       </div>
 
@@ -77,9 +75,7 @@ const nextPost = currentIndex < (allPosts.value?.length ?? 0) - 1 ? allPosts.val
     </header>
 
     <!-- Content -->
-    <div class="post-content">
-      <ContentRenderer :value="post" />
-    </div>
+    <div class="post-content" v-html="post.body"></div>
 
     <!-- Navigation -->
     <nav v-if="prevPost || nextPost" class="post-navigation">

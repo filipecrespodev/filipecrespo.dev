@@ -1,17 +1,8 @@
 <script setup lang="ts">
-const { data: posts } = await useAsyncData('blog-posts', () =>
-  queryContent('/blog')
-    .sort({ publishedAt: -1 })
-    .find()
-)
-
-// Função para calcular tempo de leitura (média de 200 palavras por minuto)
-const calculateReadingTime = (content: string) => {
-  const wordsPerMinute = 200
-  const words = content.trim().split(/\s+/).length
-  const minutes = Math.ceil(words / wordsPerMinute)
-  return minutes
-}
+// Busca todos os posts via API SSR
+const { data: posts } = await useAsyncData('blog-posts', async () => {
+  return await $fetch('/api/blog')
+})
 
 // Função para formatar data
 const formatDate = (dateString: string) => {
@@ -50,10 +41,6 @@ const formatDate = (dateString: string) => {
               <span class="post-date">
                 <Icon name="heroicons-solid:calendar" />
                 {{ formatDate(post.publishedAt) }}
-              </span>
-              <span class="post-reading-time">
-                <Icon name="heroicons-solid:clock" />
-                {{ calculateReadingTime(post.body?.children?.map((c: any) => c.children?.map((cc: any) => cc.value).join(' ')).join(' ') || '') }} min de leitura
               </span>
             </div>
 

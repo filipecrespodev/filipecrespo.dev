@@ -5,7 +5,11 @@
       "Bash(bun run format:*)",
       "Bash(git add:*)",
       "WebFetch(domain:pt.linkedin.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(bun dev)",
+      "Bash(curl:*)",
+      "Bash(test:*)",
+      "Bash(npm install:*)"
     ]
   }
 }
