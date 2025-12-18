@@ -12,7 +12,13 @@
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
       "Bash(npm run lint:fix:*)",
-      "Bash(bun run lint:fix:*)"
+      "Bash(bun run lint:fix:*)",
+      "Bash(bun remove:*)",
+      "Bash(bun add:*)",
+      "Bash(bunx husky:*)",
+      "Bash(chmod:*)",
+      "Bash(.husky/pre-commit:*)",
+      "Bash(.husky/pre-push)"
     ]
   }
 }

@@ -130,7 +130,7 @@
 
     <!-- Social Links -->
     <div class="social-section">
-      <SocialLinks variant="horizontal" size="md" />
+      <AppSocialLinks variant="horizontal" size="md" />
     </div>
 
     <!-- Footer -->

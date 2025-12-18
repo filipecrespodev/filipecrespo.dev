@@ -11,7 +11,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "migrate:posts": "tsx scripts/migrate-posts-to-supabase.ts"
+    "migrate:posts": "tsx scripts/migrate-posts-to-supabase.ts",
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{js,ts,vue,mjs}": [
@@ -41,7 +42,7 @@
   },
   "devDependencies": {
     "dotenv": "^17.2.3",
-    "lefthook": "^2.0.11",
+    "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "tsx": "^4.21.0"

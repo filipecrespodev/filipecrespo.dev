@@ -1,7 +1,7 @@
 <template>
   <UApp>
     <div class="app-layout">
-      <Sidebar />
+      <AppSidebar />
       <main class="main-content">
         <NuxtPage />
       </main>

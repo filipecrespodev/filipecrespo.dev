@@ -74,7 +74,7 @@ const certifications = [
 
       <!-- Social Links -->
       <div class="hero-social">
-        <SocialLinks variant="horizontal" size="lg" />
+        <AppSocialLinks variant="horizontal" size="lg" />
       </div>
     </section>
 
