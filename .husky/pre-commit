@@ -1,1 +1,7 @@
 bunx lint-staged
+bun run type-check
+bun run lint
+bun run stylelint
+bun run format:check
+bun run audit
+bun run depcheck

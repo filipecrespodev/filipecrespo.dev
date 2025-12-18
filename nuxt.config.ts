@@ -18,6 +18,24 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   compatibilityDate: "2024-04-03",
+  app: {
+    head: {
+      title: "Filipe Soares Crespo - Software Engineer",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Engenheiro de software com mais de 10 anos de experiência em desenvolvimento web, arquitetura de software e metodologias ágeis. Especializado em PHP, Laravel, Vue.js, Docker e DevOps.",
+        },
+        {
+          name: "keywords",
+          content:
+            "Software Engineer, Desenvolvedor, PHP, Laravel, Vue.js, Docker, DevOps, Scrum, JavaScript, TypeScript",
+        },
+        { name: "author", content: "Filipe Soares Crespo" },
+      ],
+    },
+  },
   runtimeConfig: {
     dbUrl: process.env.DB_URL,
     dbApi: process.env.DB_API,

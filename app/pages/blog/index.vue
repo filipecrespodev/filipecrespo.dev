@@ -1,4 +1,15 @@
 <script setup lang="ts">
+// SEO Meta Tags
+useSeoMeta({
+  title: "Blog - Filipe Soares Crespo",
+  description:
+    "Artigos sobre desenvolvimento web, tecnologia e boas práticas de programação. Conteúdo técnico sobre PHP, Laravel, Vue.js, DevOps e muito mais.",
+  ogTitle: "Blog - Filipe Soares Crespo",
+  ogDescription:
+    "Artigos sobre desenvolvimento web, tecnologia e boas práticas de programação.",
+  twitterCard: "summary",
+});
+
 // Busca todos os posts via API SSR
 const { data: posts } = await useAsyncData("blog-posts", async () => {
   return await $fetch("/api/blog");

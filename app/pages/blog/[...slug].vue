@@ -14,6 +14,20 @@ if (!post.value) {
   });
 }
 
+// SEO Meta Tags dinâmicos baseados no post
+useSeoMeta({
+  title: `${post.value.title} - Filipe Soares Crespo`,
+  description: post.value.description || post.value.title,
+  ogTitle: post.value.title,
+  ogDescription: post.value.description || post.value.title,
+  ogType: "article",
+  articlePublishedTime: post.value.publishedAt,
+  articleAuthor: "Filipe Soares Crespo",
+  articleTag: post.value.tags || [],
+  twitterCard: "summary_large_image",
+  keywords: post.value.tags?.join(", ") || "",
+});
+
 // Função para calcular tempo de leitura
 const calculateReadingTime = (content: string) => {
   const wordsPerMinute = 200;
