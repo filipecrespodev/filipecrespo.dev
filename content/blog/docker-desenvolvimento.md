@@ -1,8 +1,8 @@
 ---
-title: 'Docker para Desenvolvimento'
-description: 'Aprenda como o Docker pode simplificar seu ambiente de desenvolvimento e melhorar a colaboração em equipe.'
-publishedAt: '2024-03-05'
-tags: ['docker', 'devops', 'containers', 'desenvolvimento']
+title: "Docker para Desenvolvimento"
+description: "Aprenda como o Docker pode simplificar seu ambiente de desenvolvimento e melhorar a colaboração em equipe."
+publishedAt: "2024-03-05"
+tags: ["docker", "devops", "containers", "desenvolvimento"]
 ---
 
 # Docker para Desenvolvimento
@@ -21,7 +21,7 @@ Docker revolucionou a forma como desenvolvemos e distribuímos aplicações. Com
 Um `docker-compose.yml` simples para uma aplicação web:
 
 ```yaml
-version: '3.8'
+version: "3.8"
 services:
   web:
     image: nginx:latest

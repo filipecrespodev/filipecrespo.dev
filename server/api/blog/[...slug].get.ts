@@ -1,49 +1,48 @@
-import matter from 'gray-matter'
-import { marked } from 'marked'
+import { marked } from "marked";
 
 export default defineEventHandler(async (event) => {
-  const slug = getRouterParam(event, 'slug')
+  const slug = getRouterParam(event, "slug");
 
   if (!slug) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Slug is required'
-    })
+      statusMessage: "Slug is required",
+    });
   }
 
   try {
-    // Usar useStorage do Nitro para acessar serverAssets (funciona em dev e produção)
-    const storage = useStorage('assets:content')
-    const filePath = `blog/${slug}.md`
+    const supabase = useSupabase();
 
-    const fileContent = await storage.getItem(filePath) as string
+    const { data: post, error } = await supabase
+      .from("posts")
+      .select("*")
+      .eq("slug", slug)
+      .single();
 
-    if (!fileContent) {
+    if (error || !post) {
       throw createError({
         statusCode: 404,
-        statusMessage: 'Post not found'
-      })
+        statusMessage: "Post not found",
+      });
     }
 
-    const { data, content } = matter(fileContent)
-
-    // Converter markdown para HTML
-    const htmlContent = await marked(content)
+    // Converter markdown para HTML se o conteúdo for markdown
+    const htmlContent = post.content ? await marked(post.content) : "";
 
     return {
-      _path: `/blog/${slug}`,
-      title: data.title,
-      description: data.description,
-      publishedAt: data.publishedAt,
-      tags: data.tags || [],
+      _path: `/blog/${post.slug}`,
+      title: post.title,
+      description: post.description,
+      publishedAt: post.published_at,
+      tags: post.tags || [],
       body: htmlContent,
-      rawContent: content
-    }
+      rawContent: post.content,
+    };
   } catch (error) {
-    console.error(`Error reading blog post "${slug}":`, error)
+    console.error(`Error reading blog post "${slug}":`, error);
     throw createError({
       statusCode: 404,
-      statusMessage: 'Post not found'
-    })
+      statusMessage: "Post not found",
+    });
   }
-})
+});

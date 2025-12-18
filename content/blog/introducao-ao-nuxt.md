@@ -1,8 +1,8 @@
 ---
-title: 'Introdução ao Nuxt 3'
-description: 'Descubra as principais funcionalidades do Nuxt 3 e como começar a desenvolver aplicações Vue.js modernas e performáticas.'
-publishedAt: '2024-01-15'
-tags: ['nuxt', 'vue', 'javascript', 'web development']
+title: "Introdução ao Nuxt 3"
+description: "Descubra as principais funcionalidades do Nuxt 3 e como começar a desenvolver aplicações Vue.js modernas e performáticas."
+publishedAt: "2024-01-15"
+tags: ["nuxt", "vue", "javascript", "web development"]
 ---
 
 # Introdução ao Nuxt 3

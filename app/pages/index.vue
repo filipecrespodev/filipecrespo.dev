@@ -87,7 +87,7 @@ const certifications = [
           :key="exp.company"
           class="timeline-item"
         >
-          <div class="timeline-marker"></div>
+          <div class="timeline-marker" />
           <div class="timeline-content">
             <h3 class="timeline-title">{{ exp.role }}</h3>
             <p class="timeline-company">{{ exp.company }}</p>

@@ -1,8 +1,8 @@
 ---
-title: 'Commits Organizados: A Arte de Versionar Código'
-description: 'Aprenda como criar commits separados e bem organizados que facilitam o trabalho em equipe e a manutenção do código.'
-publishedAt: '2024-03-20'
-tags: ['git', 'boas-práticas', 'versionamento', 'desenvolvimento']
+title: "Commits Organizados: A Arte de Versionar Código"
+description: "Aprenda como criar commits separados e bem organizados que facilitam o trabalho em equipe e a manutenção do código."
+publishedAt: "2024-03-20"
+tags: ["git", "boas-práticas", "versionamento", "desenvolvimento"]
 ---
 
 # Commits Organizados: A Arte de Versionar Código
@@ -12,12 +12,15 @@ Um dos maiores diferenciais entre desenvolvedores iniciantes e experientes está
 ## Por que Commits Organizados Importam?
 
 ### 1. Facilitam Code Review
+
 Quando você separa mudanças em commits lógicos, os revisores conseguem entender cada alteração no contexto correto. Um commit que mistura refatoração com nova funcionalidade é confuso e difícil de revisar.
 
 ### 2. Simplificam Rollbacks
+
 Se um bug é introduzido, commits organizados permitem fazer rollback apenas da mudança problemática, sem perder outras melhorias.
 
 ### 3. Documentam Decisões
+
 O histórico de commits bem escritos conta a história do projeto, explicando não apenas o que mudou, mas por quê.
 
 ## Princípios de Commits Organizados
@@ -27,11 +30,13 @@ O histórico de commits bem escritos conta a história do projeto, explicando n�
 Cada commit deve representar uma única mudança lógica e completa. Exemplos:
 
 **Bom:**
+
 - ✅ "Adiciona validação de email no formulário de cadastro"
 - ✅ "Corrige bug de timezone na exibição de datas"
 - ✅ "Refatora função de cálculo de desconto para usar Strategy Pattern"
 
 **Ruim:**
+
 - ❌ "Várias mudanças"
 - ❌ "WIP"
 - ❌ "Adiciona validação, corrige bug e refatora código"
@@ -185,18 +190,22 @@ Antes de fazer commit, pergunte:
 ## Erros Comuns a Evitar
 
 ### 1. Commits Muito Grandes
+
 ❌ "Adiciona todo sistema de pagamento"
 ✅ Quebrar em: setup, integração API, validação, testes
 
 ### 2. Commits Muito Pequenos
+
 ❌ Um commit por linha alterada
 ✅ Agrupar mudanças relacionadas
 
 ### 3. Mensagens Vagas
+
 ❌ "Atualiza código"
 ✅ "Otimiza consulta SQL de listagem de produtos"
 
 ### 4. Commits com Erros
+
 ❌ Commitar código que não compila
 ✅ Sempre testar antes de commitar
 
@@ -228,5 +237,6 @@ No próximo artigo, vamos explorar **Conventional Commits**, um padrão que leva
 ---
 
 **Referências:**
+
 - [Git Documentation](https://git-scm.com/doc)
 - [Conventional Commits](https://www.conventionalcommits.org/)

@@ -1,40 +1,29 @@
-import matter from 'gray-matter'
-
 export default defineEventHandler(async () => {
   try {
-    // Usar useStorage do Nitro para acessar serverAssets (funciona em dev e produção)
-    const storage = useStorage('assets:content')
+    const supabase = useSupabase();
 
-    // Listar todos os arquivos no diretório blog
-    const keys = await storage.getKeys('blog')
-    const mdKeys = keys.filter(key => key.endsWith('.md'))
+    const { data: posts, error } = await supabase
+      .from("posts")
+      .select("id, slug, title, description, published_at, tags")
+      .order("published_at", { ascending: false });
 
-    const posts = await Promise.all(
-      mdKeys.map(async (key) => {
-        const fileContent = await storage.getItem(key) as string
-        const { data } = matter(fileContent)
+    if (error) {
+      console.error("Error fetching blog posts:", error);
+      return [];
+    }
 
-        // Extrair slug do caminho (ex: blog/introducao-ao-nuxt.md -> introducao-ao-nuxt)
-        const slug = key.replace('blog/', '').replace('.md', '')
-
-        return {
-          _path: `/blog/${slug}`,
-          title: data.title,
-          description: data.description,
-          publishedAt: data.publishedAt,
-          tags: data.tags || []
-        }
-      })
-    )
-
-    // Ordenar por data de publicação (mais recente primeiro)
-    posts.sort((a, b) => {
-      return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    })
-
-    return posts
+    // Mapear para o formato esperado pelo frontend
+    return (
+      posts?.map((post) => ({
+        _path: `/blog/${post.slug}`,
+        title: post.title,
+        description: post.description,
+        publishedAt: post.published_at,
+        tags: post.tags || [],
+      })) || []
+    );
   } catch (error) {
-    console.error('Error reading blog posts:', error)
-    return []
+    console.error("Error reading blog posts:", error);
+    return [];
   }
-})
+});

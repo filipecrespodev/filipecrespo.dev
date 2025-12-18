@@ -1,8 +1,8 @@
 ---
-title: 'Conventional Commits: Padronização que Faz Diferença'
-description: 'Entenda o padrão Conventional Commits e como ele pode melhorar drasticamente a qualidade do seu histórico Git e automatizar processos.'
-publishedAt: '2024-03-25'
-tags: ['git', 'conventional-commits', 'automação', 'changelog']
+title: "Conventional Commits: Padronização que Faz Diferença"
+description: "Entenda o padrão Conventional Commits e como ele pode melhorar drasticamente a qualidade do seu histórico Git e automatizar processos."
+publishedAt: "2024-03-25"
+tags: ["git", "conventional-commits", "automação", "changelog"]
 ---
 
 # Conventional Commits: Padronização que Faz Diferença
@@ -32,60 +32,70 @@ feat(auth): adiciona login com Google
 ### Tipos Principais
 
 **feat**: Nova funcionalidade
+
 ```bash
 feat: adiciona filtro de busca avançada
 feat(api): implementa endpoint de upload de imagens
 ```
 
 **fix**: Correção de bug
+
 ```bash
 fix: corrige cálculo de frete para CEPs especiais
 fix(checkout): resolve erro ao aplicar cupom de desconto
 ```
 
 **docs**: Apenas documentação
+
 ```bash
 docs: atualiza README com instruções de instalação
 docs(api): adiciona exemplos de uso da API
 ```
 
 **style**: Formatação de código
+
 ```bash
 style: formata código seguindo ESLint
 style(components): organiza imports alfabeticamente
 ```
 
 **refactor**: Refatoração sem mudar comportamento
+
 ```bash
 refactor: extrai lógica de validação para service
 refactor(database): otimiza queries do repository
 ```
 
 **perf**: Melhorias de performance
+
 ```bash
 perf: implementa cache Redis para consultas frequentes
 perf(images): adiciona lazy loading nas imagens
 ```
 
 **test**: Adição ou correção de testes
+
 ```bash
 test: adiciona testes unitários para UserService
 test(e2e): cobre fluxo completo de checkout
 ```
 
 **chore**: Tarefas de manutenção
+
 ```bash
 chore: atualiza dependências
 chore(deps): faz upgrade do Vue para v3.4
 ```
 
 **build**: Mudanças no build
+
 ```bash
 build: configura Vite para produção
 build(docker): otimiza Dockerfile
 ```
 
 **ci**: Mudanças em CI/CD
+
 ```bash
 ci: adiciona workflow de deploy automático
 ci(github): configura PR checks
@@ -179,10 +189,12 @@ Resultado:
 ## [1.2.0] - 2024-03-25
 
 ### Features
+
 - **auth**: adiciona login com Google
 - **checkout**: adiciona suporte para cartão virtual
 
 ### Bug Fixes
+
 - **payment**: corrige validação de cartão
 - corrige cálculo de frete para CEPs especiais
 ```
@@ -273,6 +285,7 @@ npm run release
 ```
 
 Isso:
+
 1. Analisa commits desde última release
 2. Calcula próxima versão
 3. Gera CHANGELOG
@@ -318,31 +331,31 @@ Você pode adaptar para seu projeto:
 ```javascript
 // commitlint.config.js
 module.exports = {
-  extends: ['@commitlint/config-conventional'],
+  extends: ["@commitlint/config-conventional"],
   rules: {
-    'type-enum': [
+    "type-enum": [
       2,
-      'always',
+      "always",
       [
-        'feat',
-        'fix',
-        'docs',
-        'style',
-        'refactor',
-        'perf',
-        'test',
-        'chore',
-        'wip',      // Adiciona WIP
-        'hotfix'    // Adiciona hotfix
-      ]
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "perf",
+        "test",
+        "chore",
+        "wip", // Adiciona WIP
+        "hotfix", // Adiciona hotfix
+      ],
     ],
-    'scope-enum': [
+    "scope-enum": [
       2,
-      'always',
-      ['auth', 'payment', 'dashboard', 'api', 'database']
-    ]
-  }
-}
+      "always",
+      ["auth", "payment", "dashboard", "api", "database"],
+    ],
+  },
+};
 ```
 
 ## Exemplos do Mundo Real
@@ -404,6 +417,7 @@ Comece adotando aos poucos - mesmo que seu time não use, seus projetos pessoais
 ---
 
 **Recursos:**
+
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Commitizen](https://github.com/commitizen/cz-cli)
 - [Commitlint](https://commitlint.js.org/)

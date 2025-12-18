@@ -1,45 +1,49 @@
 <script setup lang="ts">
-const route = useRoute()
-const slug = route.params.slug?.[0] || ''
+const route = useRoute();
+const slug = route.params.slug?.[0] || "";
 
 const { data: post } = await useAsyncData(`blog-${slug}`, async () => {
-  return await $fetch(`/api/blog/${slug}`)
-})
+  return await $fetch(`/api/blog/${slug}`);
+});
 
 if (!post.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: 'Post não encontrado',
-    fatal: true
-  })
+    statusMessage: "Post não encontrado",
+    fatal: true,
+  });
 }
 
 // Função para calcular tempo de leitura
 const calculateReadingTime = (content: string) => {
-  const wordsPerMinute = 200
-  const words = content.trim().split(/\s+/).length
-  const minutes = Math.ceil(words / wordsPerMinute)
-  return minutes
-}
+  const wordsPerMinute = 200;
+  const words = content.trim().split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return minutes;
+};
 
 // Função para formatar data
 const formatDate = (dateString: string) => {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('pt-BR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
+  const date = new Date(dateString);
+  return date.toLocaleDateString("pt-BR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
 
 // Navegação entre posts
-const { data: allPosts } = await useAsyncData('all-blog-posts', async () => {
-  return await $fetch('/api/blog')
-})
+const { data: allPosts } = await useAsyncData("all-blog-posts", async () => {
+  return await $fetch("/api/blog");
+});
 
-const currentIndex = allPosts.value?.findIndex(p => p._path === post.value?._path) ?? -1
-const prevPost = currentIndex > 0 ? allPosts.value?.[currentIndex - 1] : null
-const nextPost = currentIndex < (allPosts.value?.length ?? 0) - 1 ? allPosts.value?.[currentIndex + 1] : null
+const currentIndex =
+  allPosts.value?.findIndex((p) => p._path === post.value?._path) ?? -1;
+const prevPost = currentIndex > 0 ? allPosts.value?.[currentIndex - 1] : null;
+const nextPost =
+  currentIndex < (allPosts.value?.length ?? 0) - 1
+    ? allPosts.value?.[currentIndex + 1]
+    : null;
 </script>
 
 <template>
@@ -63,7 +67,7 @@ const nextPost = currentIndex < (allPosts.value?.length ?? 0) - 1 ? allPosts.val
         </span>
         <span class="meta-item">
           <Icon name="heroicons-solid:clock" />
-          {{ calculateReadingTime(post.rawContent || '') }} min de leitura
+          {{ calculateReadingTime(post.rawContent || "") }} min de leitura
         </span>
       </div>
 
@@ -75,15 +79,12 @@ const nextPost = currentIndex < (allPosts.value?.length ?? 0) - 1 ? allPosts.val
     </header>
 
     <!-- Content -->
-    <div class="post-content" v-html="post.body"></div>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <div class="post-content" v-html="post.body" />
 
     <!-- Navigation -->
     <nav v-if="prevPost || nextPost" class="post-navigation">
-      <NuxtLink
-        v-if="prevPost"
-        :to="prevPost._path"
-        class="nav-link nav-prev"
-      >
+      <NuxtLink v-if="prevPost" :to="prevPost._path" class="nav-link nav-prev">
         <Icon name="heroicons-solid:arrow-left" />
         <div class="nav-content">
           <span class="nav-label">Post anterior</span>
@@ -91,11 +92,7 @@ const nextPost = currentIndex < (allPosts.value?.length ?? 0) - 1 ? allPosts.val
         </div>
       </NuxtLink>
 
-      <NuxtLink
-        v-if="nextPost"
-        :to="nextPost._path"
-        class="nav-link nav-next"
-      >
+      <NuxtLink v-if="nextPost" :to="nextPost._path" class="nav-link nav-next">
         <div class="nav-content">
           <span class="nav-label">Próximo post</span>
           <span class="nav-title">{{ nextPost.title }}</span>
@@ -325,7 +322,7 @@ const nextPost = currentIndex < (allPosts.value?.length ?? 0) - 1 ? allPosts.val
 }
 
 .post-content :deep(code) {
-  font-family: 'Monaco', 'Courier New', monospace;
+  font-family: "Monaco", "Courier New", monospace;
 }
 
 .post-content :deep(p code) {

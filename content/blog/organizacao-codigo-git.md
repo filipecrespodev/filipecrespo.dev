@@ -1,8 +1,8 @@
 ---
-title: 'Organização de Código com Git: Estratégias Vencedoras'
-description: 'Descubra estratégias práticas para organizar seu código usando Git, desde estrutura de branches até workflows que escalam.'
-publishedAt: '2024-03-30'
-tags: ['git', 'workflow', 'branches', 'organização']
+title: "Organização de Código com Git: Estratégias Vencedoras"
+description: "Descubra estratégias práticas para organizar seu código usando Git, desde estrutura de branches até workflows que escalam."
+publishedAt: "2024-03-30"
+tags: ["git", "workflow", "branches", "organização"]
 ---
 
 # Organização de Código com Git: Estratégias Vencedoras
@@ -103,6 +103,7 @@ main (trunk)
 ```
 
 **Regras:**
+
 - Branches vivem no máximo 1-2 dias
 - Integração contínua constante
 - Feature flags para funcionalidades incompletas
@@ -125,6 +126,7 @@ git push
 ### Princípio: Commits Atômicos
 
 Cada commit deve ser:
+
 - **Completo**: Funciona isoladamente
 - **Focado**: Uma mudança lógica
 - **Testável**: Testes passam após o commit
@@ -178,6 +180,7 @@ git add -p arquivo.js
 ```
 
 Opções:
+
 - `y` - adiciona este hunk
 - `n` - não adiciona
 - `s` - divide em hunks menores
@@ -190,12 +193,12 @@ Arquivo com duas mudanças não relacionadas:
 ```javascript
 // Mudança 1: Nova validação
 function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 // Mudança 2: Formatação de telefone
 function formatPhone(phone) {
-  return phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3')
+  return phone.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
 }
 ```
 
@@ -287,6 +290,7 @@ Resultado: 5 commits → 3 commits limpos
 ### Rebase vs Merge
 
 **Merge**: Preserva histórico completo
+
 ```bash
 git checkout main
 git merge feature/user-profile
@@ -294,6 +298,7 @@ git merge feature/user-profile
 ```
 
 **Rebase**: História linear
+
 ```bash
 git checkout feature/user-profile
 git rebase main
@@ -426,6 +431,7 @@ GitHub Flow + Forks.
 ## Checklist de Organização
 
 ### Antes de Commitar
+
 - [ ] Código está formatado?
 - [ ] Testes passam?
 - [ ] Commit é atômico?
@@ -433,12 +439,14 @@ GitHub Flow + Forks.
 - [ ] Removeu debug code?
 
 ### Antes de Push
+
 - [ ] Rebase com branch principal?
 - [ ] Histórico está limpo?
 - [ ] Todos commits são relevantes?
 - [ ] .gitignore está correto?
 
 ### Antes de PR
+
 - [ ] Branch está atualizada?
 - [ ] Descrição do PR está clara?
 - [ ] Commits estão organizados?
@@ -493,6 +501,7 @@ Comece implementando uma estratégia de branches adequada ao seu projeto, adote 
 ---
 
 **Ferramentas Mencionadas:**
+
 - [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
 - [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow)
 - [Husky](https://typicode.github.io/husky/)

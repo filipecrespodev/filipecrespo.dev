@@ -1,18 +1,18 @@
 <script setup lang="ts">
 // Busca todos os posts via API SSR
-const { data: posts } = await useAsyncData('blog-posts', async () => {
-  return await $fetch('/api/blog')
-})
+const { data: posts } = await useAsyncData("blog-posts", async () => {
+  return await $fetch("/api/blog");
+});
 
 // Função para formatar data
 const formatDate = (dateString: string) => {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('pt-BR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
+  const date = new Date(dateString);
+  return date.toLocaleDateString("pt-BR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
 </script>
 
 <template>
@@ -21,17 +21,14 @@ const formatDate = (dateString: string) => {
     <header class="blog-header">
       <h1 class="page-title">Blog</h1>
       <p class="page-description">
-        Artigos sobre desenvolvimento web, tecnologia e boas práticas de programação.
+        Artigos sobre desenvolvimento web, tecnologia e boas práticas de
+        programação.
       </p>
     </header>
 
     <!-- Posts List -->
     <div v-if="posts && posts.length > 0" class="posts-list">
-      <article
-        v-for="post in posts"
-        :key="post._path"
-        class="post-card"
-      >
+      <article v-for="post in posts" :key="post._path" class="post-card">
         <NuxtLink :to="post._path" class="post-link">
           <div class="post-content">
             <h2 class="post-title">{{ post.title }}</h2>
@@ -45,11 +42,7 @@ const formatDate = (dateString: string) => {
             </div>
 
             <div v-if="post.tags && post.tags.length > 0" class="post-tags">
-              <span
-                v-for="tag in post.tags.slice(0, 3)"
-                :key="tag"
-                class="tag"
-              >
+              <span v-for="tag in post.tags.slice(0, 3)" :key="tag" class="tag">
                 {{ tag }}
               </span>
             </div>
@@ -66,9 +59,7 @@ const formatDate = (dateString: string) => {
     <div v-else class="empty-state">
       <Icon name="heroicons-solid:document-text" class="empty-icon" />
       <h2 class="empty-title">Nenhum post encontrado</h2>
-      <p class="empty-description">
-        Os posts aparecerão aqui em breve.
-      </p>
+      <p class="empty-description">Os posts aparecerão aqui em breve.</p>
     </div>
   </div>
 </template>

@@ -1,34 +1,34 @@
 <script setup lang="ts">
 interface Props {
-  variant?: 'horizontal' | 'vertical'
-  size?: 'sm' | 'md' | 'lg'
+  variant?: "horizontal" | "vertical";
+  size?: "sm" | "md" | "lg";
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  variant: 'horizontal',
-  size: 'md'
-})
+const { variant, size } = withDefaults(defineProps<Props>(), {
+  variant: "horizontal",
+  size: "md",
+});
 
 const socialLinks = [
   {
-    name: 'LinkedIn',
-    url: 'https://pt.linkedin.com/in/filipescrespo',
-    icon: 'mdi:linkedin',
-    color: '#0A66C2'
+    name: "LinkedIn",
+    url: "https://pt.linkedin.com/in/filipescrespo",
+    icon: "mdi:linkedin",
+    color: "#0A66C2",
   },
   {
-    name: 'GitHub',
-    url: 'https://github.com/filipecrespodev',
-    icon: 'mdi:github',
-    color: '#181717'
-  }
-]
+    name: "GitHub",
+    url: "https://github.com/filipecrespodev",
+    icon: "mdi:github",
+    color: "#181717",
+  },
+];
 
 const sizeClasses = {
-  sm: 'text-lg',
-  md: 'text-xl',
-  lg: 'text-2xl'
-}
+  sm: "text-lg",
+  md: "text-xl",
+  lg: "text-2xl",
+};
 </script>
 
 <template>

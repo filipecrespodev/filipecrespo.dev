@@ -1,8 +1,8 @@
 ---
-title: 'Laravel: PHP Moderno e Elegante'
-description: 'Explore como o Laravel revolucionou o desenvolvimento PHP com sua sintaxe elegante e ferramentas poderosas.'
-publishedAt: '2024-02-10'
-tags: ['laravel', 'php', 'backend', 'framework']
+title: "Laravel: PHP Moderno e Elegante"
+description: "Explore como o Laravel revolucionou o desenvolvimento PHP com sua sintaxe elegante e ferramentas poderosas."
+publishedAt: "2024-02-10"
+tags: ["laravel", "php", "backend", "framework"]
 ---
 
 # Laravel: PHP Moderno e Elegante
@@ -12,6 +12,7 @@ O Laravel transformou o desenvolvimento PHP, trazendo elegância e simplicidade 
 ## Características Principais
 
 ### Eloquent ORM
+
 O Eloquent torna o trabalho com bancos de dados intuitivo e expressivo:
 
 ```php
@@ -21,6 +22,7 @@ $users = User::where('active', true)
 ```
 
 ### Blade Templates
+
 Sistema de templates poderoso e fácil de usar:
 
 ```blade

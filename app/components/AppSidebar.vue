@@ -5,23 +5,103 @@
       <div class="logo">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <!-- Outer Circle -->
-          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" />
+          <circle
+            cx="50"
+            cy="50"
+            r="45"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          />
 
           <!-- Spokes -->
-          <line x1="50" y1="5" x2="50" y2="20" stroke="currentColor" stroke-width="2" />
-          <line x1="50" y1="80" x2="50" y2="95" stroke="currentColor" stroke-width="2" />
-          <line x1="5" y1="50" x2="20" y2="50" stroke="currentColor" stroke-width="2" />
-          <line x1="80" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="2" />
-          <line x1="17" y1="17" x2="28" y2="28" stroke="currentColor" stroke-width="2" />
-          <line x1="72" y1="72" x2="83" y2="83" stroke="currentColor" stroke-width="2" />
-          <line x1="83" y1="17" x2="72" y2="28" stroke="currentColor" stroke-width="2" />
-          <line x1="28" y1="72" x2="17" y2="83" stroke="currentColor" stroke-width="2" />
+          <line
+            x1="50"
+            y1="5"
+            x2="50"
+            y2="20"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <line
+            x1="50"
+            y1="80"
+            x2="50"
+            y2="95"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <line
+            x1="5"
+            y1="50"
+            x2="20"
+            y2="50"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <line
+            x1="80"
+            y1="50"
+            x2="95"
+            y2="50"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <line
+            x1="17"
+            y1="17"
+            x2="28"
+            y2="28"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <line
+            x1="72"
+            y1="72"
+            x2="83"
+            y2="83"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <line
+            x1="83"
+            y1="17"
+            x2="72"
+            y2="28"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <line
+            x1="28"
+            y1="72"
+            x2="17"
+            y2="83"
+            stroke="currentColor"
+            stroke-width="2"
+          />
 
           <!-- Inner Circle -->
-          <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="2" />
+          <circle
+            cx="50"
+            cy="50"
+            r="25"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          />
 
           <!-- FC Text -->
-          <text x="50" y="58" font-size="20" font-weight="bold" text-anchor="middle" fill="currentColor" font-family="sans-serif">FC</text>
+          <text
+            x="50"
+            y="58"
+            font-size="20"
+            font-weight="bold"
+            text-anchor="middle"
+            fill="currentColor"
+            font-family="sans-serif"
+          >
+            FC
+          </text>
         </svg>
       </div>
 
@@ -55,7 +135,9 @@
 
     <!-- Footer -->
     <footer class="sidebar-footer">
-      <p class="copyright">&copy; {{ new Date().getFullYear() }} Filipe Crespo</p>
+      <p class="copyright">
+        &copy; {{ new Date().getFullYear() }} Filipe Crespo
+      </p>
     </footer>
   </aside>
 </template>

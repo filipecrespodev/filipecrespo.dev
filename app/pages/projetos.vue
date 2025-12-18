@@ -1,73 +1,83 @@
 <script setup lang="ts">
 interface Project {
-  name: string
-  description: string
-  language: string
-  languageColor: string
-  stars: number
-  url: string
-  topics?: string[]
+  name: string;
+  description: string;
+  language: string;
+  languageColor: string;
+  stars: number;
+  url: string;
+  topics?: string[];
 }
 
 const projects: Project[] = [
   {
-    name: 'fenix_system',
-    description: 'Sistema de gestão empresarial (ERP) focado no fluxo da empresa. Desenvolvido com PHP/Laravel e Vue.js para oferecer uma solução completa de gestão.',
-    language: 'PHP',
-    languageColor: '#4F5D95',
+    name: "fenix_system",
+    description:
+      "Sistema de gestão empresarial (ERP) focado no fluxo da empresa. Desenvolvido com PHP/Laravel e Vue.js para oferecer uma solução completa de gestão.",
+    language: "PHP",
+    languageColor: "#4F5D95",
     stars: 1,
-    url: 'https://github.com/filipecrespodev/fenix_system',
-    topics: ['php', 'laravel', 'vuejs', 'erp']
+    url: "https://github.com/filipecrespodev/fenix_system",
+    topics: ["php", "laravel", "vuejs", "erp"],
   },
   {
-    name: 'speech-switch',
-    description: 'Interface Python para serviços que realizam conversão de voz para texto e texto para voz. Projeto focado em acessibilidade e automação.',
-    language: 'Python',
-    languageColor: '#3572A5',
+    name: "speech-switch",
+    description:
+      "Interface Python para serviços que realizam conversão de voz para texto e texto para voz. Projeto focado em acessibilidade e automação.",
+    language: "Python",
+    languageColor: "#3572A5",
     stars: 3,
-    url: 'https://github.com/filipecrespodev/speech-switch',
-    topics: ['python', 'speech-recognition', 'text-to-speech']
+    url: "https://github.com/filipecrespodev/speech-switch",
+    topics: ["python", "speech-recognition", "text-to-speech"],
   },
   {
-    name: 'game-vue-socket-io',
-    description: 'Jogo multiplayer em tempo real desenvolvido com VueJS, NodeJs e Socket.io. Demonstra comunicação em tempo real e interatividade.',
-    language: 'Vue',
-    languageColor: '#41B883',
+    name: "game-vue-socket-io",
+    description:
+      "Jogo multiplayer em tempo real desenvolvido com VueJS, NodeJs e Socket.io. Demonstra comunicação em tempo real e interatividade.",
+    language: "Vue",
+    languageColor: "#41B883",
     stars: 0,
-    url: 'https://github.com/filipecrespodev/game-vue-socket-io',
-    topics: ['vuejs', 'nodejs', 'socketio', 'game']
+    url: "https://github.com/filipecrespodev/game-vue-socket-io",
+    topics: ["vuejs", "nodejs", "socketio", "game"],
   },
   {
-    name: 'dotfiles',
-    description: 'Coleção de arquivos de configuração pessoal para ambiente de desenvolvimento. Scripts e configurações para produtividade máxima.',
-    language: 'Shell',
-    languageColor: '#89e051',
+    name: "dotfiles",
+    description:
+      "Coleção de arquivos de configuração pessoal para ambiente de desenvolvimento. Scripts e configurações para produtividade máxima.",
+    language: "Shell",
+    languageColor: "#89e051",
     stars: 4,
-    url: 'https://github.com/filipecrespodev/dotfiles',
-    topics: ['dotfiles', 'shell', 'configuration']
+    url: "https://github.com/filipecrespodev/dotfiles",
+    topics: ["dotfiles", "shell", "configuration"],
   },
   {
-    name: 'dev_study',
-    description: 'Repositório de estudos e experimentos com Python. Contém diversos projetos de aprendizado e prática de conceitos.',
-    language: 'Python',
-    languageColor: '#3572A5',
+    name: "dev_study",
+    description:
+      "Repositório de estudos e experimentos com Python. Contém diversos projetos de aprendizado e prática de conceitos.",
+    language: "Python",
+    languageColor: "#3572A5",
     stars: 0,
-    url: 'https://github.com/filipecrespodev/dev_study',
-    topics: ['python', 'learning', 'studies']
+    url: "https://github.com/filipecrespodev/dev_study",
+    topics: ["python", "learning", "studies"],
   },
   {
-    name: 'criptografia-ransomwares',
-    description: 'Estudos sobre criptografia e ransomwares em Python. Projeto educacional para entender segurança e criptografia.',
-    language: 'Python',
-    languageColor: '#3572A5',
+    name: "criptografia-ransomwares",
+    description:
+      "Estudos sobre criptografia e ransomwares em Python. Projeto educacional para entender segurança e criptografia.",
+    language: "Python",
+    languageColor: "#3572A5",
     stars: 0,
-    url: 'https://github.com/filipecrespodev/criptografia-ransomwares',
-    topics: ['python', 'cryptography', 'security']
-  }
-]
+    url: "https://github.com/filipecrespodev/criptografia-ransomwares",
+    topics: ["python", "cryptography", "security"],
+  },
+];
 
-const featuredProjects = projects.filter(p => p.stars > 0 || ['fenix_system', 'speech-switch', 'game-vue-socket-io'].includes(p.name))
-const otherProjects = projects.filter(p => !featuredProjects.includes(p))
+const featuredProjects = projects.filter(
+  (p) =>
+    p.stars > 0 ||
+    ["fenix_system", "speech-switch", "game-vue-socket-io"].includes(p.name)
+);
+const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
 </script>
 
 <template>
@@ -76,8 +86,8 @@ const otherProjects = projects.filter(p => !featuredProjects.includes(p))
     <header class="projects-header">
       <h1 class="page-title">Projetos</h1>
       <p class="page-description">
-        Uma seleção dos meus projetos open source e experimentos pessoais.
-        Todos os projetos estão disponíveis no
+        Uma seleção dos meus projetos open source e experimentos pessoais. Todos
+        os projetos estão disponíveis no
         <a
           href="https://github.com/filipecrespodev"
           target="_blank"
@@ -123,7 +133,7 @@ const otherProjects = projects.filter(p => !featuredProjects.includes(p))
                 <span
                   class="language-dot"
                   :style="{ backgroundColor: project.languageColor }"
-                ></span>
+                />
                 {{ project.language }}
               </span>
               <span v-if="project.stars > 0" class="stars">
@@ -178,7 +188,7 @@ const otherProjects = projects.filter(p => !featuredProjects.includes(p))
                 <span
                   class="language-dot"
                   :style="{ backgroundColor: project.languageColor }"
-                ></span>
+                />
                 {{ project.language }}
               </span>
             </div>
