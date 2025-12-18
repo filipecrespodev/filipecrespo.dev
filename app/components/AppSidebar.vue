@@ -297,7 +297,7 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .sidebar {
     width: 100%;
     height: auto;

@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import Inspect from "vite-plugin-inspect";
+
 export default defineNuxtConfig({
   modules: [
     "@nuxt/ui",
@@ -23,5 +25,8 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "vercel",
+  },
+  vite: {
+    plugins: [Inspect()],
   },
 });

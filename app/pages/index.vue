@@ -185,7 +185,7 @@ const certifications = [
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid var(--color-primary-500);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
   display: block;
 }
 
@@ -193,7 +193,7 @@ const certifications = [
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-gray-900);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -205,7 +205,7 @@ const certifications = [
 .hero-subtitle {
   font-size: 1.25rem;
   color: var(--color-primary-600);
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1.5rem;
   font-weight: 600;
 }
 
@@ -220,7 +220,7 @@ const certifications = [
   line-height: 1.7;
   color: var(--color-gray-600);
   max-width: 700px;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 2rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -355,7 +355,7 @@ const certifications = [
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-gray-900);
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.25rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -367,7 +367,7 @@ const certifications = [
 .timeline-company {
   font-size: 1rem;
   color: var(--color-primary-600);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem;
   font-weight: 500;
 }
 
@@ -380,7 +380,7 @@ const certifications = [
 .timeline-period {
   font-size: 0.875rem;
   color: var(--color-gray-500);
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.75rem;
 }
 
 .timeline-description {
@@ -421,7 +421,7 @@ const certifications = [
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-gray-900);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -433,7 +433,7 @@ const certifications = [
 .education-course {
   font-size: 1rem;
   color: var(--color-gray-700);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -535,14 +535,14 @@ const certifications = [
 
 .project-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 }
 
 .project-title {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-gray-900);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -565,7 +565,7 @@ const certifications = [
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .hero-title {
     font-size: 2rem;
   }

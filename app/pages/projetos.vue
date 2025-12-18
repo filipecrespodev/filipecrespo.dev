@@ -119,6 +119,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
               rel="noopener noreferrer"
               class="project-link"
               :title="`Ver ${project.name} no GitHub`"
+              :aria-label="`Ver ${project.name} no GitHub`"
             >
               <Icon name="mdi:github" />
             </a>
@@ -174,6 +175,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
               rel="noopener noreferrer"
               class="project-link"
               :title="`Ver ${project.name} no GitHub`"
+              :aria-label="`Ver ${project.name} no GitHub`"
             >
               <Icon name="mdi:github" />
             </a>
@@ -242,7 +244,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-gray-900);
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -317,7 +319,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
   gap: 2rem;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -345,13 +347,13 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 24px rgb(0 0 0 / 10%);
   border-color: var(--color-primary-500);
 }
 
 @media (prefers-color-scheme: dark) {
   .project-card:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 24px rgb(0 0 0 / 30%);
   }
 }
 
@@ -556,7 +558,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-gray-900);
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -568,7 +570,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
 .cta-description {
   font-size: 1.125rem;
   color: var(--color-gray-600);
-  margin: 0 0 2rem 0;
+  margin: 0 0 2rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -599,7 +601,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
 .cta-button:hover {
   background: var(--color-primary-700);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -609,7 +611,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .page-title {
     font-size: 2rem;
   }

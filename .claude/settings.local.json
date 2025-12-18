@@ -18,7 +18,13 @@
       "Bash(bunx husky:*)",
       "Bash(chmod:*)",
       "Bash(.husky/pre-commit:*)",
-      "Bash(.husky/pre-push)"
+      "Bash(.husky/pre-push)",
+      "Bash(bun run lint:*)",
+      "Bash(bun run validate:*)",
+      "Bash(bun run stylelint:fix:*)",
+      "Bash(bun run depcheck:*)",
+      "Bash(bun run type-check:*)",
+      "Bash(bun run stylelint:*)"
     ]
   }
 }

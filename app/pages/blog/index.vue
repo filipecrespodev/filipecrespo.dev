@@ -79,7 +79,7 @@ const formatDate = (dateString: string) => {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-gray-900);
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -126,13 +126,13 @@ const formatDate = (dateString: string) => {
 
 .post-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgb(0 0 0 / 10%);
   border-color: var(--color-primary-500);
 }
 
 @media (prefers-color-scheme: dark) {
   .post-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 16px rgb(0 0 0 / 30%);
   }
 }
 
@@ -289,7 +289,7 @@ const formatDate = (dateString: string) => {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--color-gray-700);
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.75rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -311,7 +311,7 @@ const formatDate = (dateString: string) => {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .page-title {
     font-size: 2rem;
   }

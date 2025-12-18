@@ -146,7 +146,7 @@ const nextPost =
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-gray-900);
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
   line-height: 1.2;
 }
 
@@ -159,7 +159,7 @@ const nextPost =
 .post-description {
   font-size: 1.25rem;
   color: var(--color-gray-600);
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1.5rem;
   line-height: 1.6;
 }
 
@@ -322,7 +322,7 @@ const nextPost =
 }
 
 .post-content :deep(code) {
-  font-family: "Monaco", "Courier New", monospace;
+  font-family: Monaco, "Courier New", monospace;
 }
 
 .post-content :deep(p code) {
@@ -369,7 +369,7 @@ const nextPost =
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .post-navigation {
     grid-template-columns: 1fr;
   }
@@ -397,7 +397,7 @@ const nextPost =
 .nav-link:hover {
   border-color: var(--color-primary-500);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
 }
 
 .nav-prev {
@@ -410,7 +410,7 @@ const nextPost =
   grid-column: 2;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .nav-next {
     grid-column: 1;
   }
@@ -457,7 +457,7 @@ const nextPost =
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .post-title {
     font-size: 2rem;
   }

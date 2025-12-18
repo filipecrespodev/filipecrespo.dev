@@ -21,7 +21,7 @@ const { color } = defineProps({
   border: 2px solid;
   border-radius: 0.5rem;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -29,6 +29,6 @@ const { color } = defineProps({
 
 .alert:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 8px rgb(0 0 0 / 15%);
 }
 </style>

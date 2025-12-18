@@ -1,0 +1,25 @@
+{
+  "ignores": [
+    "@nuxt/*",
+    "@unhead/vue",
+    "eslint",
+    "prettier",
+    "prettier-plugin-tailwindcss",
+    "husky",
+    "lint-staged",
+    "typescript",
+    "vue-tsc",
+    "stylelint",
+    "stylelint-config-standard",
+    "stylelint-config-recommended-vue",
+    "postcss-html",
+    "depcheck",
+    "tsx",
+    "dotenv",
+    "@commitlint/*",
+    "vite-plugin-inspect",
+    "axe-core",
+    "eslint-plugin-vuejs-accessibility"
+  ],
+  "ignore-patterns": ["dist", ".nuxt", ".output", "node_modules"]
+}

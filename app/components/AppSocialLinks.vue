@@ -4,10 +4,7 @@ interface Props {
   size?: "sm" | "md" | "lg";
 }
 
-const { variant, size } = withDefaults(defineProps<Props>(), {
-  variant: "horizontal",
-  size: "md",
-});
+const { variant = "horizontal", size = "md" } = defineProps<Props>();
 
 const socialLinks = [
   {
@@ -41,6 +38,7 @@ const sizeClasses = {
       rel="noopener noreferrer"
       class="social-link"
       :title="social.name"
+      :aria-label="social.name"
     >
       <Icon :name="social.icon" :class="sizeClasses[size]" />
     </a>
