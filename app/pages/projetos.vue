@@ -256,7 +256,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
 .page-description {
   font-size: 1.125rem;
   line-height: 1.7;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   margin: 0;
 }
 
@@ -392,7 +392,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
   justify-content: center;
   border-radius: 0.5rem;
   background: var(--color-gray-200);
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   font-size: 1.5rem;
 }
 
@@ -404,7 +404,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
 }
 
 .project-link {
-  color: var(--color-gray-500);
+  color: var(--color-gray-600);
   transition: all 0.2s;
   font-size: 1.25rem;
   text-decoration: none;
@@ -445,7 +445,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
 .project-description {
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: var(--color-gray-600);
+  color: var(--color-gray-800);
   margin: 0;
   flex: 1;
 }
@@ -474,7 +474,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-800);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -493,7 +493,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-800);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -569,7 +569,7 @@ const otherProjects = projects.filter((p) => !featuredProjects.includes(p));
 
 .cta-description {
   font-size: 1.125rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-800);
   margin: 0 0 2rem;
 }
 

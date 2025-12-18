@@ -68,7 +68,7 @@ const sizeClasses = {
   width: 40px;
   height: 40px;
   border-radius: 0.5rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   background-color: var(--color-gray-100);
   transition: all 0.2s ease;
   text-decoration: none;

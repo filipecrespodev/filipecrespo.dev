@@ -175,7 +175,13 @@
 .logo {
   width: 80px;
   height: 80px;
-  color: var(--color-primary-500);
+  color: var(--color-primary-700);
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    color: var(--color-primary-400);
+  }
 }
 
 .logo svg {
@@ -203,7 +209,7 @@
 
 .title {
   font-size: 0.875rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   margin: 0;
 }
 
@@ -285,14 +291,14 @@
 
 .copyright {
   font-size: 0.75rem;
-  color: var(--color-gray-500);
+  color: var(--color-gray-800);
   text-align: center;
   margin: 0;
 }
 
 @media (prefers-color-scheme: dark) {
   .copyright {
-    color: var(--color-gray-500);
+    color: var(--color-gray-400);
   }
 }
 

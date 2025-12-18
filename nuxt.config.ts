@@ -20,6 +20,9 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   app: {
     head: {
+      htmlAttrs: {
+        lang: "pt-BR",
+      },
       title: "Filipe Soares Crespo - Software Engineer",
       meta: [
         {

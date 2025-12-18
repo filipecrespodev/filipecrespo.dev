@@ -102,7 +102,7 @@ const formatDate = (dateString: string) => {
 .page-description {
   font-size: 1.125rem;
   line-height: 1.7;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   margin: 0;
 }
 
@@ -190,7 +190,7 @@ const formatDate = (dateString: string) => {
 .post-description {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   margin: 0;
 }
 
@@ -206,7 +206,7 @@ const formatDate = (dateString: string) => {
   align-items: center;
   gap: 1.5rem;
   font-size: 0.875rem;
-  color: var(--color-gray-500);
+  color: var(--color-gray-600);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -254,7 +254,7 @@ const formatDate = (dateString: string) => {
   height: 40px;
   border-radius: 50%;
   background: var(--color-gray-100);
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   transition: all 0.2s;
   flex-shrink: 0;
 }
@@ -311,7 +311,7 @@ const formatDate = (dateString: string) => {
 
 .empty-description {
   font-size: 1rem;
-  color: var(--color-gray-500);
+  color: var(--color-gray-600);
   margin: 0;
 }
 

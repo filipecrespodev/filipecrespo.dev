@@ -218,7 +218,7 @@ const certifications = [
 .hero-description {
   font-size: 1.1rem;
   line-height: 1.7;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   max-width: 700px;
   margin: 0 auto 2rem;
 }
@@ -256,7 +256,7 @@ const certifications = [
 
 .stat-label {
   font-size: 0.875rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   margin-top: 0.25rem;
 }
 
@@ -379,7 +379,7 @@ const certifications = [
 
 .timeline-period {
   font-size: 0.875rem;
-  color: var(--color-gray-500);
+  color: var(--color-gray-800);
   margin: 0 0 0.75rem;
 }
 
@@ -444,7 +444,7 @@ const certifications = [
 
 .education-period {
   font-size: 0.875rem;
-  color: var(--color-gray-500);
+  color: var(--color-gray-800);
   margin: 0;
 }
 
@@ -553,7 +553,7 @@ const certifications = [
 
 .project-description {
   font-size: 0.9375rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   margin: 0;
   line-height: 1.6;
 }

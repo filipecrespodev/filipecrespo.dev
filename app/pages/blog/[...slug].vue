@@ -133,7 +133,7 @@ const nextPost =
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   text-decoration: none;
   font-size: 0.9375rem;
   margin-bottom: 2rem;
@@ -172,7 +172,7 @@ const nextPost =
 
 .post-description {
   font-size: 1.25rem;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
   margin: 0 0 1.5rem;
   line-height: 1.6;
 }
@@ -189,7 +189,7 @@ const nextPost =
   gap: 1.5rem;
   margin-bottom: 1.5rem;
   font-size: 0.9375rem;
-  color: var(--color-gray-500);
+  color: var(--color-gray-600);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -359,7 +359,7 @@ const nextPost =
   padding-left: 1.5rem;
   margin: 2rem 0;
   font-style: italic;
-  color: var(--color-gray-600);
+  color: var(--color-gray-700);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -438,7 +438,7 @@ const nextPost =
 
 .nav-label {
   font-size: 0.875rem;
-  color: var(--color-gray-500);
+  color: var(--color-gray-600);
   font-weight: 500;
 }
 
