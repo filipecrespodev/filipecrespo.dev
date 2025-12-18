@@ -24,7 +24,8 @@
       "Bash(bun run stylelint:fix:*)",
       "Bash(bun run depcheck:*)",
       "Bash(bun run type-check:*)",
-      "Bash(bun run stylelint:*)"
+      "Bash(bun run stylelint:*)",
+      "Bash(bun run format:check:*)"
     ]
   }
 }

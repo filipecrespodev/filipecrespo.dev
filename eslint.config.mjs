@@ -8,5 +8,14 @@ export default withNuxt({
   },
   rules: {
     ...vueA11y.configs.recommended.rules,
+    // Allow self-closing on HTML void elements (compatible with Prettier)
+    "vue/html-self-closing": [
+      "warn",
+      {
+        html: {
+          void: "always",
+        },
+      },
+    ],
   },
 });
