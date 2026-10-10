@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "title": "Filipe Crespo — Ingeniero de Software",
+    "description": "Ingeniero de software con más de 10 años de experiencia. Construyo productos web simples y útiles, como Meus Prompts y Brincaki."
+  },
+  "a11y": {
+    "skip": "Saltar al contenido",
+    "language": "Idioma",
+    "newTab": "(se abre en una nueva pestaña)",
+    "social": "Redes sociales"
+  },
+  "hero": {
+    "role": "Ingeniero de Software",
+    "bio": "Padre, esposo e ingeniero de software desde hace más de 10 años. Me gusta convertir ideas en productos simples, útiles y bien hechos.",
+    "photoAlt": "Retrato en blanco y negro de Filipe Soares Crespo"
+  },
+  "about": {
+    "label": "Sobre mí",
+    "title": "Ingeniería, producto y comunidad.",
+    "body": "Empecé construyendo sistemas web con PHP y Laravel y hoy trabajo con TypeScript, Vue y arquitectura de software. He dado charlas en PHP Summit y TheDevConference, y me gusta compartir lo que aprendo construyendo productos de principio a fin."
+  },
+  "projects": {
+    "label": "Proyectos",
+    "title": "Lo que estoy construyendo.",
+    "items": {
+      "meusprompts": {
+        "description": "Plataforma para crear, publicar y compartir prompts de IA, con métricas y comunidad.",
+        "status": "En línea"
+      },
+      "brincaki": {
+        "description": "Un nuevo proyecto en construcción. Más detalles pronto.",
+        "status": "Próximamente"
+      }
+    }
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "Hablemos.",
+    "body": "Abierto a conversaciones sobre producto, ingeniería y nuevas ideas. Encuéntrame en los enlaces de abajo."
+  },
+  "footer": {
+    "backToTop": "Volver arriba"
+  }
+}

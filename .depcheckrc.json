@@ -20,7 +20,8 @@
     "eslint-plugin-vuejs-accessibility",
     "@types/bun",
     "bun:test",
-    "@iconify-json/*"
+    "@iconify-json/*",
+    "@nuxtjs/*"
   ],
   "ignore-patterns": ["dist", ".nuxt", ".output", "node_modules"]
 }

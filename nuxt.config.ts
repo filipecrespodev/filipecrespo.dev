@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/scripts",
     "@nuxt/test-utils",
+    "@nuxtjs/i18n",
   ],
   css: ["~/assets/css/main.css"],
   devtools: { enabled: true },
@@ -21,16 +22,26 @@ export default defineNuxtConfig({
   ui: {
     colorMode: false,
   },
-  app: {
-    head: {
-      htmlAttrs: { lang: "pt-BR" },
-      title: "Filipe Crespo — Software Engineer",
-    },
+  i18n: {
+    baseUrl: "https://filipecrespo.dev",
+    defaultLocale: "pt-BR",
+    strategy: "prefix_except_default",
+    detectBrowserLanguage: false,
+    locales: [
+      {
+        code: "pt-BR",
+        language: "pt-BR",
+        name: "Português",
+        file: "pt-BR.json",
+      },
+      { code: "en", language: "en-US", name: "English", file: "en.json" },
+      { code: "es", language: "es-ES", name: "Español", file: "es.json" },
+    ],
   },
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/"],
+      routes: ["/", "/en", "/es"],
     },
   },
   vite: {

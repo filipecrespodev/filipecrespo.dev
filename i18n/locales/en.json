@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "title": "Filipe Crespo — Software Engineer",
+    "description": "Software engineer with 10+ years of experience. I build simple, useful web products like Meus Prompts and Brincaki."
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "language": "Language",
+    "newTab": "(opens in a new tab)",
+    "social": "Social links"
+  },
+  "hero": {
+    "role": "Software Engineer",
+    "bio": "Father, husband and software engineer for over 10 years. I like turning ideas into simple, useful, well-crafted products.",
+    "photoAlt": "Black and white portrait of Filipe Soares Crespo"
+  },
+  "about": {
+    "label": "About",
+    "title": "Engineering, product and community.",
+    "body": "I started building web systems with PHP and Laravel and now work with TypeScript, Vue and software architecture. I have spoken at PHP Summit and TheDevConference, and I enjoy sharing what I learn while building products end to end."
+  },
+  "projects": {
+    "label": "Projects",
+    "title": "What I'm building.",
+    "items": {
+      "meusprompts": {
+        "description": "A platform to create, publish and share AI prompts, with metrics and a community.",
+        "status": "Live"
+      },
+      "brincaki": {
+        "description": "A new project in the works. More details soon.",
+        "status": "Coming soon"
+      }
+    }
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Let's talk.",
+    "body": "Open to conversations about product, engineering and new ideas. Find me on the links below."
+  },
+  "footer": {
+    "backToTop": "Back to top"
+  }
+}

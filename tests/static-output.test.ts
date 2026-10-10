@@ -22,3 +22,45 @@ describe("static output", () => {
     expect(html).not.toContain('href="/projetos');
   });
 });
+
+describe("i18n", () => {
+  const cases = [
+    {
+      route: "",
+      lang: "pt-BR",
+      title: "Filipe Crespo — Engenheiro de Software",
+    },
+    { route: "en", lang: "en-US", title: "Filipe Crespo — Software Engineer" },
+    {
+      route: "es",
+      lang: "es-ES",
+      title: "Filipe Crespo — Ingeniero de Software",
+    },
+  ];
+
+  for (const { route, lang, title } of cases) {
+    test(`/${route} has lang ${lang} and localized title`, () => {
+      const html = page(route);
+      expect(html).toContain(`lang="${lang}"`);
+      expect(html).toContain(`<title>${title}</title>`);
+      expect(html).toMatch(/<meta name="description" content="[^"]+"/);
+    });
+
+    test(`/${route} has hreflang alternates`, () => {
+      const html = page(route);
+      const alternates = {
+        "pt-BR": "https://filipecrespo.dev",
+        "en-US": "https://filipecrespo.dev/en",
+        "es-ES": "https://filipecrespo.dev/es",
+        "x-default": "https://filipecrespo.dev",
+      };
+      for (const [hreflang, href] of Object.entries(alternates)) {
+        const tag = html.match(
+          new RegExp(`<link[^>]*hreflang="${hreflang}"[^>]*>`)
+        )?.[0];
+        expect(tag).toBeDefined();
+        expect(tag).toContain(`href="${href}"`);
+      }
+    });
+  }
+});
