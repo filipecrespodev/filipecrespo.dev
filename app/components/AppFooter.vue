@@ -7,7 +7,8 @@ const year = new Date().getFullYear();
   <footer class="site-footer container">
     <p>© {{ year }} Filipe Soares Crespo</p>
     <a href="#top" class="back-to-top">
-      {{ t("footer.backToTop") }} <span aria-hidden="true">↑</span>
+      {{ t("footer.backToTop") }}
+      <Icon name="mdi:arrow-up" class="back-to-top-icon" aria-hidden="true" />
     </a>
   </footer>
 </template>
@@ -29,6 +30,9 @@ const year = new Date().getFullYear();
 }
 
 .back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   color: var(--muted);
   text-decoration: none;
   transition: color 0.2s ease;

@@ -1,75 +1,28 @@
-# Nuxt Content Starter
+# filipecrespo.dev
 
-Look at the [Nuxt Content documentation](https://content.nuxt.com) to learn more.
+Site pessoal de Filipe Soares Crespo — Nuxt 4, gerado como HTML estático, em pt-BR, en e es.
 
-## Setup
+## Desenvolvimento
 
-Make sure to install dependencies:
+    bun install
+    bun run dev
 
-```bash
-# npm
-npm install
+## Build estático
 
-# pnpm
-pnpm install
+    bun run build          # nuxt generate → .output/public
+    bun run serve:static   # serve o build em http://localhost:3000
 
-# yarn
-yarn install
+## Testes e qualidade
 
-# bun
-bun install
-```
+    bun run build && bun test   # testes sobre o HTML gerado e as traduções
+    bun run validate            # type-check, eslint, stylelint, prettier
+    bun run a11y:test           # pa11y (com serve:static rodando)
+    bun run a11y:audit          # Lighthouse (com serve:static rodando)
 
-## Development Server
+Se o puppeteer não encontrar o Chrome, use o do sistema:
+`PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome bun run a11y:test`.
 
-Start the development server on `http://localhost:3000`:
+## Conteúdo
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Textos: `i18n/locales/{pt-BR,en,es}.json` (as três precisam ter as mesmas chaves).
+- Projetos: `app/data/projects.ts` + `projects.items.<id>` em cada locale.

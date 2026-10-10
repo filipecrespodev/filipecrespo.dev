@@ -68,11 +68,23 @@ const status = computed(() => t(`projects.items.${project.id}.status`));
 }
 
 .project-name {
+  position: relative;
+  align-self: flex-start;
   font-family: var(--font-display);
   font-size: 1.5rem;
   line-height: 1.2;
-  background: linear-gradient(currentcolor, currentcolor) 0 100% / 0 1px
-    no-repeat;
+}
+
+.project-name::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentcolor;
+  transform: scaleX(0);
+  transform-origin: left;
 }
 
 .project-description {
@@ -85,8 +97,8 @@ const status = computed(() => t(`projects.items.${project.id}.status`));
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .project-name {
-    transition: background-size 0.4s var(--ease-out);
+  .project-name::after {
+    transition: transform 0.4s var(--ease-out);
   }
 
   .project-arrow {
@@ -94,9 +106,9 @@ const status = computed(() => t(`projects.items.${project.id}.status`));
   }
 }
 
-.project-row--link:hover .project-name,
-.project-row--link:focus-visible .project-name {
-  background-size: 100% 1px;
+.project-row--link:hover .project-name::after,
+.project-row--link:focus-visible .project-name::after {
+  transform: scaleX(1);
 }
 
 .project-row--link:hover .project-arrow,

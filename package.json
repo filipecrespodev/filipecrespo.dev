@@ -20,7 +20,8 @@
     "a11y:audit": "lhci autorun",
     "a11y:test": "pa11y-ci",
     "prepare": "husky",
-    "test": "bun test"
+    "test": "bun test",
+    "serve:static": "bunx serve .output/public -l 3000"
   },
   "lint-staged": {
     "*.{js,ts,vue,mjs}": [
