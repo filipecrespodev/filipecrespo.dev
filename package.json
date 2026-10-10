@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt generate",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -19,8 +19,8 @@
     "validate": "bun run type-check && bun run lint && bun run stylelint && bun run format:check",
     "a11y:audit": "lhci autorun",
     "a11y:test": "pa11y-ci",
-    "migrate:posts": "tsx scripts/migrate-posts-to-supabase.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "bun test"
   },
   "lint-staged": {
     "*.{js,ts,vue,mjs}": [
@@ -44,21 +44,17 @@
     "@nuxt/scripts": "0.13.1",
     "@nuxt/test-utils": "3.21.0",
     "@nuxt/ui": "^4.3.0",
-    "@supabase/supabase-js": "^2.88.0",
     "@unhead/vue": "^2.0.19",
-    "better-sqlite3": "^12.5.0",
     "eslint": "^9.39.2",
-    "gray-matter": "^4.0.3",
-    "marked": "^17.0.1",
     "nuxt": "^4.2.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.2.0",
     "@commitlint/config-conventional": "^20.2.0",
     "@lhci/cli": "^0.15.1",
+    "@types/bun": "^1.3.0",
     "axe-core": "^4.11.0",
     "depcheck": "^1.4.7",
-    "dotenv": "^17.2.3",
     "eslint-plugin-vuejs-accessibility": "^2.4.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
@@ -69,7 +65,6 @@
     "stylelint": "^16.26.1",
     "stylelint-config-recommended-vue": "^1.6.1",
     "stylelint-config-standard": "^39.0.1",
-    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vite-plugin-inspect": "^11.3.3",
     "vue-tsc": "^3.1.8"

@@ -33,36 +33,38 @@
 
 ## File Map
 
-| File | Responsibility |
-|---|---|
-| `nuxt.config.ts` | Modules, i18n config, prerender routes |
-| `package.json` | Scripts (`build` → generate, `test`), deps |
-| `tests/static-output.test.ts` | Assertions on generated HTML in `.output/public` |
-| `tests/locales.test.ts` | Locale key parity |
-| `i18n/locales/{pt-BR,en,es}.json` | All copy |
-| `app/app.vue` | Shell: skip link, header, main, footer, locale head/SEO |
-| `app/assets/css/main.css` | Design tokens, globals, reveal classes |
-| `app/components/AppHeader.vue` | Name + LangSwitcher |
-| `app/components/LangSwitcher.vue` | PT · EN · ES links |
-| `app/components/AppFooter.vue` | Copyright + back to top |
-| `app/components/SectionBlock.vue` | Numbered section wrapper with `v-reveal` |
-| `app/components/ProjectItem.vue` | One project row |
-| `app/components/AppSocialLinks.vue` | LinkedIn/GitHub links (restyled) |
-| `app/data/projects.ts` | Non-translatable project data |
-| `app/plugins/reveal.ts` | `v-reveal` directive |
-| `app/pages/index.vue` | Hero + three sections |
-| `.pa11yci.json`, `lighthouserc.json` | a11y audit routes |
+| File                                 | Responsibility                                          |
+| ------------------------------------ | ------------------------------------------------------- |
+| `nuxt.config.ts`                     | Modules, i18n config, prerender routes                  |
+| `package.json`                       | Scripts (`build` → generate, `test`), deps              |
+| `tests/static-output.test.ts`        | Assertions on generated HTML in `.output/public`        |
+| `tests/locales.test.ts`              | Locale key parity                                       |
+| `i18n/locales/{pt-BR,en,es}.json`    | All copy                                                |
+| `app/app.vue`                        | Shell: skip link, header, main, footer, locale head/SEO |
+| `app/assets/css/main.css`            | Design tokens, globals, reveal classes                  |
+| `app/components/AppHeader.vue`       | Name + LangSwitcher                                     |
+| `app/components/LangSwitcher.vue`    | PT · EN · ES links                                      |
+| `app/components/AppFooter.vue`       | Copyright + back to top                                 |
+| `app/components/SectionBlock.vue`    | Numbered section wrapper with `v-reveal`                |
+| `app/components/ProjectItem.vue`     | One project row                                         |
+| `app/components/AppSocialLinks.vue`  | LinkedIn/GitHub links (restyled)                        |
+| `app/data/projects.ts`               | Non-translatable project data                           |
+| `app/plugins/reveal.ts`              | `v-reveal` directive                                    |
+| `app/pages/index.vue`                | Hero + three sections                                   |
+| `.pa11yci.json`, `lighthouserc.json` | a11y audit routes                                       |
 
 ---
 
 ### Task 1: Remove blog/server and switch to static generation
 
 **Files:**
+
 - Delete: `server/`, `app/pages/blog/`, `app/pages/projetos.vue`, `content.config.ts`, `insert-posts.sql`, `scripts/migrate-posts-to-supabase.ts`, `app/components/AppSidebar.vue`, `app/components/AppCounter.vue`, `app/components/AppAlert.vue`
 - Modify: `nuxt.config.ts`, `package.json`, `.env.example`, `.depcheckrc.json`, `app/app.vue`
 - Create: `tests/static-output.test.ts`
 
 **Interfaces:**
+
 - Produces: `bun run build` → `.output/public/index.html`; `tests/static-output.test.ts` exporting nothing, with helper `page(route)` used by later tasks.
 
 - [ ] **Step 1: Write the failing test**
@@ -197,7 +199,16 @@ Run: `bun run validate`
 Expected: PASS. If `vue-tsc` complains about `bun:test` types, add `"types": ["bun"]` via a `tests/tsconfig.json`:
 
 ```json
-{ "compilerOptions": { "types": ["bun"], "module": "ESNext", "moduleResolution": "Bundler", "strict": true, "noEmit": true }, "include": ["./**/*.ts"] }
+{
+  "compilerOptions": {
+    "types": ["bun"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true
+  },
+  "include": ["./**/*.ts"]
+}
 ```
 
 - [ ] **Step 10: Commit**
@@ -214,10 +225,12 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ### Task 2: i18n with pt-BR, en, es
 
 **Files:**
+
 - Modify: `nuxt.config.ts`, `package.json`, `.depcheckrc.json`, `app/app.vue`, `tests/static-output.test.ts`
 - Create: `i18n/locales/pt-BR.json`, `i18n/locales/en.json`, `i18n/locales/es.json`, `tests/locales.test.ts`
 
 **Interfaces:**
+
 - Consumes: Task 1 `page(route)` helper.
 - Produces: message keys used by Tasks 3–5 (exact list in the JSON below); `useI18n()`, `useSwitchLocalePath()`, `useLocalePath()` available.
 
@@ -235,7 +248,7 @@ type Messages = { [key: string]: string | Messages };
 
 const keys = (obj: Messages, prefix = ""): string[] =>
   Object.entries(obj).flatMap(([k, v]) =>
-    typeof v === "string" ? [`${prefix}${k}`] : keys(v, `${prefix}${k}.`),
+    typeof v === "string" ? [`${prefix}${k}`] : keys(v, `${prefix}${k}.`)
   );
 
 test("en has the same keys as pt-BR", () => {
@@ -263,9 +276,17 @@ Append to `tests/static-output.test.ts` (inside the file, after the existing `de
 ```ts
 describe("i18n", () => {
   const cases = [
-    { route: "", lang: "pt-BR", title: "Filipe Crespo — Engenheiro de Software" },
+    {
+      route: "",
+      lang: "pt-BR",
+      title: "Filipe Crespo — Engenheiro de Software",
+    },
     { route: "en", lang: "en-US", title: "Filipe Crespo — Software Engineer" },
-    { route: "es", lang: "es-ES", title: "Filipe Crespo — Ingeniero de Software" },
+    {
+      route: "es",
+      lang: "es-ES",
+      title: "Filipe Crespo — Ingeniero de Software",
+    },
   ];
 
   for (const { route, lang, title } of cases) {
@@ -278,9 +299,15 @@ describe("i18n", () => {
 
     test(`/${route} has hreflang alternates`, () => {
       const html = page(route);
-      expect(html).toContain('hreflang="pt-BR" href="https://filipecrespo.dev"');
-      expect(html).toContain('hreflang="en-US" href="https://filipecrespo.dev/en"');
-      expect(html).toContain('hreflang="es-ES" href="https://filipecrespo.dev/es"');
+      expect(html).toContain(
+        'hreflang="pt-BR" href="https://filipecrespo.dev"'
+      );
+      expect(html).toContain(
+        'hreflang="en-US" href="https://filipecrespo.dev/en"'
+      );
+      expect(html).toContain(
+        'hreflang="es-ES" href="https://filipecrespo.dev/es"'
+      );
       expect(html).toContain('hreflang="x-default"');
     });
   }
@@ -517,10 +544,12 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ### Task 3: Design tokens, header, language switcher, footer
 
 **Files:**
+
 - Modify: `app/assets/css/main.css`, `app/app.vue`, `tests/static-output.test.ts`
 - Create: `app/components/AppHeader.vue`, `app/components/LangSwitcher.vue`, `app/components/AppFooter.vue`
 
 **Interfaces:**
+
 - Consumes: i18n keys `a11y.skip`, `a11y.language`, `footer.backToTop`, `hero.role`.
 - Produces: CSS tokens `--bg --fg --muted --line --accent --font-display --font-body --ease-out`, global `.container` class, `#top` anchor on header, `#main` on `<main>`.
 
@@ -536,7 +565,9 @@ describe("layout", () => {
     test(`/${route} language switcher links to all locales`, () => {
       const html = page(route);
       for (const href of Object.values(switcherHrefs)) {
-        expect(html).toMatch(new RegExp(`<a[^>]*href="${href}"[^>]*class="lang-link`));
+        expect(html).toMatch(
+          new RegExp(`<a[^>]*href="${href}"[^>]*class="lang-link`)
+        );
       }
     });
 
@@ -544,7 +575,9 @@ describe("layout", () => {
       const html = page(route);
       const current = switcherHrefs[route as keyof typeof switcherHrefs];
       expect(html).toMatch(
-        new RegExp(`<a[^>]*href="${current}"[^>]*aria-current="page"|<a[^>]*aria-current="page"[^>]*href="${current}"`),
+        new RegExp(
+          `<a[^>]*href="${current}"[^>]*aria-current="page"|<a[^>]*aria-current="page"[^>]*href="${current}"`
+        )
       );
     });
 
@@ -846,10 +879,12 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ### Task 4: Home page content (hero, about, projects, contact)
 
 **Files:**
+
 - Create: `app/data/projects.ts`, `app/components/SectionBlock.vue`, `app/components/ProjectItem.vue`
 - Modify: `app/pages/index.vue` (full rewrite), `app/components/AppSocialLinks.vue`, `tests/static-output.test.ts`
 
 **Interfaces:**
+
 - Consumes: tokens and `.container` from Task 3; i18n keys `hero.*`, `about.*`, `projects.*`, `contact.*`, `a11y.newTab`, `a11y.social`.
 - Produces: `Project` type `{ id: string; name: string; url?: string }`, `projects: Project[]` from `~/data/projects`; `SectionBlock` props `{ id: string; number: string; label: string; title: string }` with root `<section>` (Task 5 adds `v-reveal` here); `ProjectItem` props `{ project: Project; index: number }`.
 
@@ -860,7 +895,9 @@ Append to `tests/static-output.test.ts`:
 ```ts
 describe("home content", () => {
   test("hero shows the name as h1", () => {
-    expect(page("")).toMatch(/<h1[^>]*>[\s\S]*Filipe[\s\S]*Crespo[\s\S]*<\/h1>/);
+    expect(page("")).toMatch(
+      /<h1[^>]*>[\s\S]*Filipe[\s\S]*Crespo[\s\S]*<\/h1>/
+    );
   });
 
   test("sections are numbered 01, 02, 03 in every locale", () => {
@@ -877,7 +914,7 @@ describe("home content", () => {
   test("Meus Prompts links out safely in a new tab", () => {
     const html = page("");
     expect(html).toMatch(
-      /<a[^>]*href="https:\/\/meusprompts\.vercel\.app"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/,
+      /<a[^>]*href="https:\/\/meusprompts\.vercel\.app"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/
     );
     expect(html).toContain("(abre em nova aba)");
   });
@@ -890,8 +927,12 @@ describe("home content", () => {
   });
 
   test("project descriptions are localized", () => {
-    expect(page("en")).toContain("A platform to create, publish and share AI prompts");
-    expect(page("es")).toContain("Plataforma para crear, publicar y compartir prompts");
+    expect(page("en")).toContain(
+      "A platform to create, publish and share AI prompts"
+    );
+    expect(page("es")).toContain(
+      "Plataforma para crear, publicar y compartir prompts"
+    );
   });
 
   test("contact has LinkedIn and GitHub but no e-mail", () => {
@@ -902,7 +943,9 @@ describe("home content", () => {
   });
 
   test("portrait has localized alt text", () => {
-    expect(page("en")).toContain('alt="Black and white portrait of Filipe Soares Crespo"');
+    expect(page("en")).toContain(
+      'alt="Black and white portrait of Filipe Soares Crespo"'
+    );
   });
 });
 ```
@@ -993,7 +1036,7 @@ const { t } = useI18n();
 
 const number = computed(() => String(index + 1).padStart(2, "0"));
 const description = computed(() =>
-  t(`projects.items.${project.id}.description`),
+  t(`projects.items.${project.id}.description`)
 );
 const status = computed(() => t(`projects.items.${project.id}.status`));
 </script>
@@ -1346,10 +1389,12 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ### Task 5: Animations
 
 **Files:**
+
 - Create: `app/plugins/reveal.ts`
 - Modify: `app/components/SectionBlock.vue`, `app/pages/index.vue`, `app/assets/css/main.css`, `tests/static-output.test.ts`
 
 **Interfaces:**
+
 - Consumes: `SectionBlock` root `<section>`; token `--ease-out`.
 - Produces: global directive `v-reveal` (client adds `reveal`, then `is-visible`).
 
@@ -1395,7 +1440,7 @@ const reveal: Directive<HTMLElement> = {
   getSSRProps: () => ({}),
   mounted(el) {
     const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+      "(prefers-reduced-motion: reduce)"
     ).matches;
     if (reducedMotion || !("IntersectionObserver" in window)) return;
 
@@ -1411,7 +1456,7 @@ const reveal: Directive<HTMLElement> = {
           observers.delete(el);
         }
       },
-      { rootMargin: "0px 0px -10% 0px" },
+      { rootMargin: "0px 0px -10% 0px" }
     );
     observer.observe(el);
     observers.set(el, observer);
@@ -1528,9 +1573,11 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ### Task 6: Accessibility audits, fonts check and README
 
 **Files:**
+
 - Modify: `.pa11yci.json`, `lighthouserc.json`, `package.json`, `README.md`
 
 **Interfaces:**
+
 - Consumes: generated `.output/public`.
 
 - [ ] **Step 1: Point audits at the new routes**

@@ -10,6 +10,7 @@ com animações leves, três idiomas (pt-BR, en, es) e foco em projetos próprio
 inicialmente **Meus Prompts** e **Brincaki**.
 
 ### Pedido do usuário
+
 - Remover o blog.
 - Visual mais moderno, com animações.
 - Conteúdo minimalista inspirado em lucasmontano.com.
@@ -18,6 +19,7 @@ inicialmente **Meus Prompts** e **Brincaki**.
 - Adicionar inglês e espanhol.
 
 ### Critérios de sucesso
+
 - `bun run generate` produz HTML estático para `/`, `/en` e `/es`, sem servidor.
 - Cada rota tem `<html lang>`, `<title>`, meta description e `hreflang` corretos no idioma.
 - `bun run validate` passa (type-check, eslint, stylelint, prettier).
