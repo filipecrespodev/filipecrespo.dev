@@ -20,6 +20,11 @@ useSeoMeta({
 
 <template>
   <UApp>
-    <NuxtPage />
+    <a href="#main" class="skip-link">{{ t("a11y.skip") }}</a>
+    <AppHeader />
+    <main id="main" class="site-main">
+      <NuxtPage />
+    </main>
+    <AppFooter />
   </UApp>
 </template>

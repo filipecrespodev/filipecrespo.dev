@@ -22,6 +22,12 @@ export default defineNuxtConfig({
   ui: {
     colorMode: false,
   },
+  fonts: {
+    families: [
+      { name: "Instrument Serif", provider: "google", weights: [400] },
+      { name: "Inter", provider: "google", weights: [400, 500] },
+    ],
+  },
   i18n: {
     baseUrl: "https://filipecrespo.dev",
     defaultLocale: "pt-BR",

@@ -64,3 +64,36 @@ describe("i18n", () => {
     });
   }
 });
+
+describe("layout", () => {
+  const switcherHrefs = { "": "/", en: "/en", es: "/es" };
+
+  for (const route of ["", "en", "es"]) {
+    test(`/${route} language switcher links to all locales`, () => {
+      const html = page(route);
+      for (const href of Object.values(switcherHrefs)) {
+        expect(html).toMatch(
+          new RegExp(`<a[^>]*href="${href}"[^>]*class="[^"]*\\blang-link`)
+        );
+      }
+    });
+
+    test(`/${route} marks the current locale with aria-current`, () => {
+      const html = page(route);
+      const current = switcherHrefs[route as keyof typeof switcherHrefs];
+      expect(html).toMatch(
+        new RegExp(
+          `<a[^>]*href="${current}"[^>]*aria-current="page"|<a[^>]*aria-current="page"[^>]*href="${current}"`
+        )
+      );
+    });
+
+    test(`/${route} has skip link, header anchor and footer back-to-top`, () => {
+      const html = page(route);
+      expect(html).toContain('href="#main"');
+      expect(html).toContain('id="main"');
+      expect(html).toContain('id="top"');
+      expect(html).toContain('href="#top"');
+    });
+  }
+});
