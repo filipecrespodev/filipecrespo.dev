@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const out = join(import.meta.dir, "..", ".output", "public");
@@ -157,5 +157,25 @@ describe("home content", () => {
     expect(page("en")).toContain(
       'alt="Black and white portrait of Filipe Soares Crespo"'
     );
+  });
+});
+
+describe("animations", () => {
+  test("no element ships hidden in the static HTML", () => {
+    for (const route of ["", "en", "es"]) {
+      const html = page(route);
+      expect(html).not.toMatch(/class="[^"]*\breveal\b/);
+    }
+  });
+
+  test("motion is gated behind prefers-reduced-motion", () => {
+    const cssDir = join(out, "_nuxt");
+    const css = readdirSync(cssDir)
+      .filter((f) => f.endsWith(".css"))
+      .map((f) => readFileSync(join(cssDir, f), "utf8"))
+      .join("\n");
+    expect(css).toMatch(/@keyframes hero-rise/);
+    expect(css).toMatch(/prefers-reduced-motion:\s*no-preference/);
+    expect(css).toContain(".reveal.is-visible");
   });
 });

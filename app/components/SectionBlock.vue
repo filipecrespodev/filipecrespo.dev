@@ -8,7 +8,7 @@ const { id, number, label, title } = defineProps<{
 </script>
 
 <template>
-  <section :id="id" class="section" :aria-labelledby="`${id}-title`">
+  <section :id="id" v-reveal class="section" :aria-labelledby="`${id}-title`">
     <p class="section-label">
       <span class="section-number">{{ number }}</span> / {{ label }}
     </p>

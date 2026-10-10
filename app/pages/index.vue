@@ -135,4 +135,42 @@ const { t } = useI18n();
     height: 112px;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-line,
+  .hero-role,
+  .hero-bio,
+  .hero-photo {
+    animation: hero-rise 0.8s var(--ease-out) both;
+  }
+
+  .hero-line:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+
+  .hero-role {
+    animation-delay: 0.16s;
+  }
+
+  .hero-bio {
+    animation-delay: 0.24s;
+  }
+
+  .hero-photo {
+    animation-delay: 0.32s;
+    transition: filter 0.5s ease;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 </style>

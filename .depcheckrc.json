@@ -22,7 +22,8 @@
     "bun:test",
     "@iconify-json/*",
     "@nuxtjs/*",
-    "~"
+    "~",
+    "vue"
   ],
   "ignore-patterns": ["dist", ".nuxt", ".output", "node_modules"]
 }
