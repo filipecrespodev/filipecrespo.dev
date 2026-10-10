@@ -122,7 +122,8 @@ const status = computed(() => t(`projects.items.${project.id}.status`));
   }
 
   .project-status {
-    display: none;
+    grid-row: 2;
+    grid-column: 2;
   }
 }
 </style>

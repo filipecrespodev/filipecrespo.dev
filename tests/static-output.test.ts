@@ -179,3 +179,33 @@ describe("animations", () => {
     expect(css).toContain(".reveal.is-visible");
   });
 });
+
+describe("review fixes", () => {
+  const builtCss = () => {
+    const cssDir = join(out, "_nuxt");
+    return readdirSync(cssDir)
+      .filter((f) => f.endsWith(".css"))
+      .map((f) => readFileSync(join(cssDir, f), "utf8"))
+      .join("\n");
+  };
+
+  test("project status is never hidden (stays visible on mobile)", () => {
+    expect(builtCss()).not.toMatch(
+      /\.project-status\[[^\]]+\]\{[^}]*display:\s*none/
+    );
+  });
+
+  test("hero name animation never makes the h1 transparent", () => {
+    const css = builtCss();
+    const rule = css.match(
+      /\.hero-line\[[^\]]+\][^{]*\{[^}]*animation:([\w-]+)/
+    );
+    expect(rule).not.toBeNull();
+    const name = rule![1];
+    const keyframes = css.match(
+      new RegExp(`@keyframes ${name}\\{(?:[^{}]*\\{[^}]*\\})*[^}]*\\}`)
+    )?.[0];
+    expect(keyframes).toBeDefined();
+    expect(keyframes).not.toContain("opacity");
+  });
+});

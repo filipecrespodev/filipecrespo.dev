@@ -137,7 +137,11 @@ const { t } = useI18n();
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero-line,
+  /* The name is the LCP element: slide it in without ever hiding it. */
+  .hero-line {
+    animation: hero-slide 0.8s var(--ease-out) both;
+  }
+
   .hero-role,
   .hero-bio,
   .hero-photo {
@@ -159,6 +163,16 @@ const { t } = useI18n();
   .hero-photo {
     animation-delay: 0.32s;
     transition: filter 0.5s ease;
+  }
+}
+
+@keyframes hero-slide {
+  from {
+    transform: translateY(24px);
+  }
+
+  to {
+    transform: none;
   }
 }
 
