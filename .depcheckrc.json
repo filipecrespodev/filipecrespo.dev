@@ -21,7 +21,8 @@
     "@types/bun",
     "bun:test",
     "@iconify-json/*",
-    "@nuxtjs/*"
+    "@nuxtjs/*",
+    "~"
   ],
   "ignore-patterns": ["dist", ".nuxt", ".output", "node_modules"]
 }
