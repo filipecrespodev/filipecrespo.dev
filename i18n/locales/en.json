@@ -14,6 +14,10 @@
     "bio": "Father, husband and software engineer for over 10 years. I like turning ideas into simple, useful, well-crafted products.",
     "photoAlt": "Black and white portrait of Filipe Soares Crespo"
   },
+  "marquee": {
+    "label": "Technologies I work with",
+    "pause": "Pause animation"
+  },
   "about": {
     "label": "About",
     "title": "Engineering, product and community.",

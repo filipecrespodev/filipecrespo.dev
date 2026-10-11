@@ -12,7 +12,7 @@ const status = computed(() => t(`projects.items.${project.id}.status`));
 </script>
 
 <template>
-  <li class="project">
+  <li v-reveal class="project" :style="{ '--i': index }">
     <a
       v-if="project.url"
       :href="project.url"
@@ -97,6 +97,11 @@ const status = computed(() => t(`projects.items.${project.id}.status`));
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* Stagger the list as it scrolls in. */
+  .project {
+    transition-delay: calc(var(--i) * 90ms);
+  }
+
   .project-name::after {
     transition: transform 0.4s var(--ease-out);
   }

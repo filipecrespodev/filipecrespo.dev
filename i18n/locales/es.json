@@ -14,6 +14,10 @@
     "bio": "Padre, esposo e ingeniero de software desde hace más de 10 años. Me gusta convertir ideas en productos simples, útiles y bien hechos.",
     "photoAlt": "Retrato en blanco y negro de Filipe Soares Crespo"
   },
+  "marquee": {
+    "label": "Tecnologías con las que trabajo",
+    "pause": "Pausar animación"
+  },
   "about": {
     "label": "Sobre mí",
     "title": "Ingeniería, producto y comunidad.",

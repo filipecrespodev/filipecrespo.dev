@@ -5,59 +5,65 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div class="container">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-text">
-        <h1 id="hero-title" class="hero-name">
-          <span class="hero-line">Filipe</span>
-          <span class="hero-line">Crespo</span>
-        </h1>
-        <p class="hero-role">{{ t("hero.role") }}</p>
-        <p class="hero-bio">{{ t("hero.bio") }}</p>
-      </div>
-      <img
-        src="/profile.jpeg"
-        :alt="t('hero.photoAlt')"
-        width="200"
-        height="200"
-        class="hero-photo"
-      />
-    </section>
-
-    <SectionBlock
-      id="about"
-      number="01"
-      :label="t('about.label')"
-      :title="t('about.title')"
-    >
-      <p class="prose">{{ t("about.body") }}</p>
-    </SectionBlock>
-
-    <SectionBlock
-      id="projects"
-      number="02"
-      :label="t('projects.label')"
-      :title="t('projects.title')"
-    >
-      <ol class="project-list">
-        <ProjectItem
-          v-for="(project, index) in projects"
-          :key="project.id"
-          :project="project"
-          :index="index"
+  <div>
+    <div class="frame container">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-text">
+          <h1 id="hero-title" class="hero-name">
+            <span class="hero-line">Filipe</span>
+            <span class="hero-line">Crespo</span>
+          </h1>
+          <p class="hero-role">{{ t("hero.role") }}</p>
+          <p class="hero-bio">{{ t("hero.bio") }}</p>
+        </div>
+        <img
+          src="/profile.jpeg"
+          :alt="t('hero.photoAlt')"
+          width="200"
+          height="200"
+          class="hero-photo"
         />
-      </ol>
-    </SectionBlock>
+      </section>
+    </div>
 
-    <SectionBlock
-      id="contact"
-      number="03"
-      :label="t('contact.label')"
-      :title="t('contact.title')"
-    >
-      <p class="prose">{{ t("contact.body") }}</p>
-      <AppSocialLinks />
-    </SectionBlock>
+    <AppMarquee />
+
+    <div class="frame container">
+      <SectionBlock
+        id="about"
+        number="01"
+        :label="t('about.label')"
+        :title="t('about.title')"
+      >
+        <p v-reveal class="prose">{{ t("about.body") }}</p>
+      </SectionBlock>
+
+      <SectionBlock
+        id="projects"
+        number="02"
+        :label="t('projects.label')"
+        :title="t('projects.title')"
+      >
+        <ol class="project-list">
+          <ProjectItem
+            v-for="(project, index) in projects"
+            :key="project.id"
+            :project="project"
+            :index="index"
+          />
+        </ol>
+      </SectionBlock>
+
+      <SectionBlock
+        id="contact"
+        number="03"
+        :label="t('contact.label')"
+        :title="t('contact.title')"
+      >
+        <p v-reveal class="prose">{{ t("contact.body") }}</p>
+        <AppSocialLinks v-reveal />
+      </SectionBlock>
+    </div>
   </div>
 </template>
 

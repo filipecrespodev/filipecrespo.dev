@@ -20,6 +20,8 @@ useSeoMeta({
 
 <template>
   <UApp>
+    <!-- Scroll target for "back to top": the header is sticky, so it can't be one. -->
+    <div id="top" />
     <a href="#main" class="skip-link">{{ t("a11y.skip") }}</a>
     <AppHeader />
     <main id="main" class="site-main">

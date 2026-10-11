@@ -209,3 +209,89 @@ describe("review fixes", () => {
     expect(keyframes).not.toContain("opacity");
   });
 });
+
+describe("scroll elements", () => {
+  const builtCss = () => {
+    const cssDir = join(out, "_nuxt");
+    return readdirSync(cssDir)
+      .filter((f) => f.endsWith(".css"))
+      .map((f) => readFileSync(join(cssDir, f), "utf8"))
+      .join("\n");
+  };
+
+  test("header sticks to the top and anchors leave room for it", () => {
+    const css = builtCss();
+    expect(css).toMatch(/\.site-header\[[^\]]+\]\{[^}]*position:\s*sticky/);
+    expect(css).toMatch(/scroll-padding-top:/);
+  });
+
+  test("#top is not the sticky header (a stuck element cannot be scrolled to)", () => {
+    expect(page("")).not.toMatch(/<header[^>]*id="top"/);
+  });
+
+  test("every section has a sticky eyebrow and decorative rule and ticks", () => {
+    for (const route of ["", "en", "es"]) {
+      const html = page(route);
+      expect(html.match(/class="section-eyebrow/g)?.length).toBe(3);
+      expect(
+        html.match(/<span[^>]*aria-hidden="true"[^>]*class="section-rule/g)
+          ?.length
+      ).toBe(3);
+      expect(
+        html.match(/<span[^>]*aria-hidden="true"[^>]*class="tick\b/g)?.length
+      ).toBe(6);
+    }
+    expect(builtCss()).toMatch(
+      /\.section-eyebrow\[[^\]]+\]\{[^}]*position:\s*sticky/
+    );
+  });
+
+  test("section rule draws above the sticky eyebrow (visible on mobile)", () => {
+    const css = builtCss();
+    // The minifier may group selectors: ".a[x],.b[x]{...z-index:11}".
+    const z = (sel: string) =>
+      Number(
+        css.match(
+          new RegExp(`\\.${sel}\\[[^\\]]+\\](?:,[^{]*)?\\{[^}]*z-index:(\\d+)`)
+        )?.[1]
+      );
+    expect(z("section-rule")).toBeGreaterThan(z("section-eyebrow"));
+  });
+
+  test("marquee repeats its track for screen readers only once", () => {
+    const html = page("");
+    const tracks = html.match(/<ul[^>]*class="marquee-track[^>]*>/g) ?? [];
+    expect(tracks).toHaveLength(2);
+    expect(tracks[0]).not.toContain("aria-hidden");
+    expect(tracks[1]).toContain('aria-hidden="true"');
+  });
+
+  test("marquee can be paused (WCAG 2.2.2) with a localized label", () => {
+    const pt = page("");
+    expect(pt).toMatch(
+      /<button[^>]*aria-pressed="false"[^>]*class="marquee-toggle/
+    );
+    expect(pt).toContain('aria-label="Pausar animação"');
+    expect(page("en")).toContain('aria-label="Pause animation"');
+    expect(page("es")).toContain('aria-label="Pausar animación"');
+  });
+
+  test("choreography never ships hidden in the static HTML", () => {
+    for (const route of ["", "en", "es"]) {
+      expect(page(route)).not.toMatch(/class="[^"]*\bchoreo\b/);
+    }
+    expect(builtCss()).toContain(".choreo.is-visible");
+  });
+
+  test("smooth scroll uses Lenis and respects reduced motion", () => {
+    const pkg = JSON.parse(
+      readFileSync(join(import.meta.dir, "..", "package.json"), "utf8")
+    );
+    expect(pkg.dependencies.lenis).toBeDefined();
+    const plugin = readFileSync(
+      join(import.meta.dir, "..", "app", "plugins", "smooth-scroll.client.ts"),
+      "utf8"
+    );
+    expect(plugin).toContain("prefers-reduced-motion");
+  });
+});

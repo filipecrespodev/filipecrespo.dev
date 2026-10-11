@@ -4,7 +4,7 @@ const year = new Date().getFullYear();
 </script>
 
 <template>
-  <footer class="site-footer container">
+  <footer class="site-footer frame container">
     <p>© {{ year }} Filipe Soares Crespo</p>
     <a href="#top" class="back-to-top">
       {{ t("footer.backToTop") }}

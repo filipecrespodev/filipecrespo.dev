@@ -4,22 +4,33 @@ const localePath = useLocalePath();
 </script>
 
 <template>
-  <header id="top" class="site-header container">
-    <NuxtLink :to="localePath('/')" class="site-name">
-      Filipe Crespo
-      <span class="site-role">— {{ t("hero.role") }}</span>
-    </NuxtLink>
-    <LangSwitcher />
+  <header class="site-header">
+    <div class="site-header-inner frame container">
+      <NuxtLink :to="localePath('/')" class="site-name">
+        Filipe Crespo
+        <span class="site-role">— {{ t("hero.role") }}</span>
+      </NuxtLink>
+      <LangSwitcher />
+    </div>
   </header>
 </template>
 
 <style scoped>
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.site-header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding-block: 1.5rem;
+  height: var(--header-h);
 }
 
 .site-name {

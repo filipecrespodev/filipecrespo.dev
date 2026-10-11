@@ -14,6 +14,10 @@
     "bio": "Pai, marido e engenheiro de software há mais de 10 anos. Gosto de transformar ideias em produtos simples, úteis e bem feitos.",
     "photoAlt": "Retrato em preto e branco de Filipe Soares Crespo"
   },
+  "marquee": {
+    "label": "Tecnologias com que trabalho",
+    "pause": "Pausar animação"
+  },
   "about": {
     "label": "Sobre",
     "title": "Engenharia, produto e comunidade.",

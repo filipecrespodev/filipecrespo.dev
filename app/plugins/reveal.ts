@@ -33,6 +33,38 @@ const reveal: Directive<HTMLElement> = {
   },
 };
 
+// Section choreography: the rule draws in, the corner ticks pop and the
+// eyebrow rises. Only decorative pieces start hidden, so it also runs for
+// sections already on screen at load.
+const choreo: Directive<HTMLElement> = {
+  getSSRProps: () => ({}),
+  mounted(el) {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reducedMotion || !("IntersectionObserver" in window)) return;
+
+    el.classList.add("choreo");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          el.classList.add("is-visible");
+          observer.disconnect();
+          observers.delete(el);
+        }
+      },
+      { rootMargin: "0px 0px -12% 0px" }
+    );
+    observer.observe(el);
+    observers.set(el, observer);
+  },
+  unmounted(el) {
+    observers.get(el)?.disconnect();
+    observers.delete(el);
+  },
+};
+
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.directive("reveal", reveal);
+  nuxtApp.vueApp.directive("choreo", choreo);
 });
