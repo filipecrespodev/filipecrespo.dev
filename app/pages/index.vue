@@ -1,589 +1,345 @@
 <script setup lang="ts">
-const experiences = [
-  {
-    company: "Saúde Trevo",
-    role: "Software Engineer",
-    period: "Atual",
-    description: "Desenvolvimento de soluções para o setor de saúde",
-  },
-  {
-    company: "Locaweb",
-    role: "Speaker",
-    period: "2020",
-    description: "Palestrante em PHP Summit 2020 e TheDevConference SP",
-  },
-  {
-    company: "Inclusão Digital/UNISUAM",
-    role: "Professor",
-    period: "jun - dez 2013",
-    description: "Montagem e Manutenção de Micros e Internet & Office",
-  },
-];
+import { experience } from "~/data/experience";
+import { projects } from "~/data/projects";
 
-const education = [
-  {
-    institution: "PUCRS",
-    course: "Pontifícia Universidade Católica do Rio Grande do Sul",
-    period: "nov 2023",
-  },
-];
+const { t } = useI18n();
+const { contactFormEndpoint } = useRuntimeConfig().public;
 
-const skills = [
-  "PHP",
-  "Laravel",
-  "Vue.js",
-  "Docker",
-  "DevOps",
-  "Scrum",
-  "JavaScript",
-  "TypeScript",
-];
+const services = computed(() =>
+  ["agencies", "web", "automation"].map((key) => ({
+    key,
+    title: t(`services.items.${key}.name`),
+    body: t(`services.items.${key}.description`),
+  }))
+);
 
-const certifications = [
-  "DevOps Essentials Professional Certificate",
-  "Scrum Foundation Professional Certificate",
-  "SPA com Vue JS e API com Laravel",
-  "Reconhecimento de Voz e Sintetização de Fala com Python",
-];
+const steps = computed(() =>
+  ["briefing", "proposal", "delivery", "support"].map((key) => ({
+    key,
+    title: t(`process.items.${key}.name`),
+    body: t(`process.items.${key}.description`),
+  }))
+);
+
+const navSections = computed(() =>
+  ["about", "services", "process", "projects", "experience", "contact"].map(
+    (id) => ({ id, label: t(`${id}.label`) })
+  )
+);
+
+const jobs = computed(() =>
+  experience.map(({ id, company, period }) => ({
+    key: id,
+    title: company,
+    meta: `${t(`experience.items.${id}.role`)} · ${period}`,
+    body: t(`experience.items.${id}.summary`),
+  }))
+);
 </script>
 
 <template>
-  <div class="home-container">
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="profile-image">
-        <img src="/profile.jpeg" alt="Filipe Soares Crespo" class="avatar" />
-      </div>
-      <h1 class="hero-title">Filipe Soares Crespo</h1>
-      <p class="hero-subtitle">Software Engineer</p>
-      <p class="hero-description">
-        Pai, marido e engenheiro de software com mais de 10 anos de experiência
-        na criação de soluções tecnológicas. Apaixonado por desenvolvimento web,
-        arquitetura de software e metodologias ágeis.
-      </p>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-value">10+</span>
-          <span class="stat-label">Anos de Experiência</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">500+</span>
-          <span class="stat-label">Conexões</span>
-        </div>
-      </div>
-
-      <!-- Social Links -->
-      <div class="hero-social">
-        <AppSocialLinks variant="horizontal" size="lg" />
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="section">
-      <h2 class="section-title">Experiência Profissional</h2>
-      <div class="timeline">
-        <div
-          v-for="exp in experiences"
-          :key="exp.company"
-          class="timeline-item"
-        >
-          <div class="timeline-marker" />
-          <div class="timeline-content">
-            <h3 class="timeline-title">{{ exp.role }}</h3>
-            <p class="timeline-company">{{ exp.company }}</p>
-            <p class="timeline-period">{{ exp.period }}</p>
-            <p class="timeline-description">{{ exp.description }}</p>
+  <div>
+    <div class="frame container">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-text">
+          <h1 id="hero-title" class="hero-name">
+            <span class="hero-line">Filipe</span>
+            <span class="hero-line">Crespo</span>
+          </h1>
+          <p class="hero-role">{{ t("hero.role") }}</p>
+          <p class="hero-availability">
+            <span class="hero-dot" aria-hidden="true" />
+            {{ t("hero.availability") }}
+          </p>
+          <p class="hero-bio">{{ t("hero.bio") }}</p>
+          <div class="hero-actions">
+            <a href="#contact" class="button">{{ t("hero.cta") }}</a>
+            <a href="#projects" class="button button--ghost">
+              {{ t("hero.ctaSecondary") }}
+            </a>
           </div>
         </div>
-      </div>
-    </section>
+        <img
+          src="/profile.jpeg"
+          :alt="t('hero.photoAlt')"
+          width="200"
+          height="200"
+          class="hero-photo"
+        />
+      </section>
+    </div>
 
-    <!-- Education Section -->
-    <section class="section">
-      <h2 class="section-title">Formação Acadêmica</h2>
-      <div class="education-list">
-        <div
-          v-for="edu in education"
-          :key="edu.institution"
-          class="education-item"
+    <AppMarquee />
+
+    <div class="page-grid container">
+      <div class="frame page-content">
+        <SectionBlock
+          id="about"
+          number="01"
+          :label="t('about.label')"
+          :title="t('about.title')"
         >
-          <h3 class="education-institution">{{ edu.institution }}</h3>
-          <p class="education-course">{{ edu.course }}</p>
-          <p class="education-period">{{ edu.period }}</p>
-        </div>
-      </div>
-    </section>
+          <p v-reveal class="prose prose--lead">{{ t("about.body") }}</p>
+        </SectionBlock>
 
-    <!-- Skills Section -->
-    <section class="section">
-      <h2 class="section-title">Competências Técnicas</h2>
-      <div class="skills-grid">
-        <span v-for="skill in skills" :key="skill" class="skill-badge">
-          {{ skill }}
-        </span>
-      </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section class="section">
-      <h2 class="section-title">Certificações</h2>
-      <ul class="certifications-list">
-        <li
-          v-for="cert in certifications"
-          :key="cert"
-          class="certification-item"
+        <SectionBlock
+          id="services"
+          number="02"
+          :label="t('services.label')"
+          :title="t('services.title')"
         >
-          <Icon name="heroicons-solid:badge-check" class="certification-icon" />
-          <span>{{ cert }}</span>
-        </li>
-      </ul>
-    </section>
+          <InfoList :items="services" variant="grid" />
+        </SectionBlock>
 
-    <!-- Projects Section -->
-    <section class="section">
-      <h2 class="section-title">Projetos Destacados</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <h3 class="project-title">DevAgil</h3>
-          <p class="project-description">
-            Iniciativa comunitária sobre metodologias ágeis
-          </p>
-        </div>
-        <div class="project-card">
-          <h3 class="project-title">Fenix</h3>
-          <p class="project-description">
-            ERP desenvolvido em PHP/Laravel com Vue.js
-          </p>
-        </div>
+        <SectionBlock
+          id="process"
+          number="03"
+          :label="t('process.label')"
+          :title="t('process.title')"
+        >
+          <InfoList :items="steps" variant="grid" />
+        </SectionBlock>
+
+        <SectionBlock
+          id="projects"
+          number="04"
+          :label="t('projects.label')"
+          :title="t('projects.title')"
+        >
+          <ol class="project-list">
+            <ProjectItem
+              v-for="(project, index) in projects"
+              :key="project.id"
+              :project="project"
+              :index="index"
+            />
+          </ol>
+        </SectionBlock>
+
+        <SectionBlock
+          id="experience"
+          number="05"
+          :label="t('experience.label')"
+          :title="t('experience.title')"
+        >
+          <InfoList :items="jobs" variant="rows" />
+        </SectionBlock>
+
+        <SectionBlock
+          id="contact"
+          number="06"
+          :label="t('contact.label')"
+          :title="t('contact.title')"
+        >
+          <div class="contact-grid">
+            <div>
+              <p v-reveal class="prose">{{ t("contact.body") }}</p>
+              <ContactForm
+                v-if="contactFormEndpoint"
+                :endpoint="contactFormEndpoint"
+              />
+            </div>
+            <div>
+              <p v-reveal class="prose">{{ t("contact.linkedin") }}</p>
+              <AppSocialLinks v-reveal />
+            </div>
+          </div>
+        </SectionBlock>
       </div>
-    </section>
+      <TerminalNav :sections="navSections" />
+    </div>
   </div>
 </template>
 
 <style scoped>
-.home-container {
-  max-width: 900px;
-  margin: 0 auto;
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 2rem;
+  padding-block: 5rem 4rem;
 }
 
-/* Hero Section */
-.hero-section {
-  text-align: center;
-  padding: 3rem 0;
-  margin-bottom: 4rem;
+.hero-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 11vw, 10rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
 }
 
-.profile-image {
-  margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-}
-
-.avatar {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--color-primary-500);
-  box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+.hero-line {
   display: block;
 }
 
-.hero-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-gray-900);
-  margin: 0 0 0.5rem;
+.hero-role {
+  margin: 1.25rem 0 0;
+  color: var(--accent);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-@media (prefers-color-scheme: dark) {
-  .hero-title {
-    color: var(--color-gray-50);
-  }
-}
-
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: var(--color-primary-600);
-  margin: 0 0 1.5rem;
-  font-weight: 600;
-}
-
-@media (prefers-color-scheme: dark) {
-  .hero-subtitle {
-    color: var(--color-primary-400);
-  }
-}
-
-.hero-description {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--color-gray-700);
-  max-width: 700px;
-  margin: 0 auto 2rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .hero-description {
-    color: var(--color-gray-300);
-  }
-}
-
-.hero-stats {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin-top: 2rem;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
+.hero-availability {
+  display: inline-flex;
   align-items: center;
-}
-
-.stat-value {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-primary-600);
-}
-
-@media (prefers-color-scheme: dark) {
-  .stat-value {
-    color: var(--color-primary-400);
-  }
-}
-
-.stat-label {
+  gap: 0.5rem;
+  margin: 0.75rem 0 0;
+  color: var(--fg);
   font-size: 0.875rem;
-  color: var(--color-gray-700);
-  margin-top: 0.25rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  .stat-label {
-    color: var(--color-gray-400);
-  }
-}
-
-.hero-social {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-}
-
-/* Section */
-.section {
-  margin-bottom: 4rem;
-}
-
-.section-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--color-gray-900);
-  margin-bottom: 2rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--color-primary-500);
-}
-
-@media (prefers-color-scheme: dark) {
-  .section-title {
-    color: var(--color-gray-50);
-  }
-}
-
-/* Timeline */
-.timeline {
-  position: relative;
-  padding-left: 2rem;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--color-gray-200);
-}
-
-@media (prefers-color-scheme: dark) {
-  .timeline::before {
-    background: var(--color-gray-700);
-  }
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 2rem;
-  padding-left: 1.5rem;
-}
-
-.timeline-marker {
-  position: absolute;
-  left: -2.375rem;
-  top: 0.375rem;
-  width: 12px;
-  height: 12px;
+.hero-dot {
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 50%;
-  background: var(--color-primary-500);
-  border: 2px solid var(--color-gray-50);
+  background: #16a34a;
 }
 
-@media (prefers-color-scheme: dark) {
-  .timeline-marker {
-    border-color: var(--color-gray-900);
-  }
-}
-
-.timeline-content {
-  background: var(--color-gray-50);
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-gray-200);
-}
-
-@media (prefers-color-scheme: dark) {
-  .timeline-content {
-    background: var(--color-gray-800);
-    border-color: var(--color-gray-700);
-  }
-}
-
-.timeline-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-gray-900);
-  margin: 0 0 0.25rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .timeline-title {
-    color: var(--color-gray-50);
-  }
-}
-
-.timeline-company {
-  font-size: 1rem;
-  color: var(--color-primary-600);
-  margin: 0 0 0.5rem;
-  font-weight: 500;
-}
-
-@media (prefers-color-scheme: dark) {
-  .timeline-company {
-    color: var(--color-primary-400);
-  }
-}
-
-.timeline-period {
-  font-size: 0.875rem;
-  color: var(--color-gray-800);
-  margin: 0 0 0.75rem;
-}
-
-.timeline-description {
-  font-size: 0.9375rem;
-  color: var(--color-gray-700);
-  margin: 0;
-  line-height: 1.6;
-}
-
-@media (prefers-color-scheme: dark) {
-  .timeline-description {
-    color: var(--color-gray-300);
-  }
-}
-
-/* Education */
-.education-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.education-item {
-  background: var(--color-gray-50);
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-gray-200);
-}
-
-@media (prefers-color-scheme: dark) {
-  .education-item {
-    background: var(--color-gray-800);
-    border-color: var(--color-gray-700);
-  }
-}
-
-.education-institution {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-gray-900);
-  margin: 0 0 0.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .education-institution {
-    color: var(--color-gray-50);
-  }
-}
-
-.education-course {
-  font-size: 1rem;
-  color: var(--color-gray-700);
-  margin: 0 0 0.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .education-course {
-    color: var(--color-gray-300);
-  }
-}
-
-.education-period {
-  font-size: 0.875rem;
-  color: var(--color-gray-800);
-  margin: 0;
-}
-
-/* Skills */
-.skills-grid {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  margin-top: 1.75rem;
 }
 
-.skill-badge {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: var(--color-primary-50);
-  color: var(--color-primary-700);
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid var(--color-primary-200);
+.hero-bio {
+  max-width: 40rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.125rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  .skill-badge {
-    background: var(--color-primary-900);
-    color: var(--color-primary-300);
-    border-color: var(--color-primary-800);
+.hero-photo {
+  width: clamp(160px, 18vw, 260px);
+  height: clamp(160px, 18vw, 260px);
+  object-fit: cover;
+  border-radius: 2px;
+  filter: grayscale(1);
+}
+
+.hero-photo:hover {
+  filter: grayscale(0);
+}
+
+.page-grid {
+  padding-inline: 0;
+}
+
+.page-content {
+  min-width: 0;
+  padding-inline: var(--gutter);
+}
+
+@media (width >= 64rem) {
+  .page-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 22rem;
   }
 }
 
-/* Certifications */
-.certifications-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.certification-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem;
-  background: var(--color-gray-50);
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-gray-200);
-  color: var(--color-gray-700);
-}
-
-@media (prefers-color-scheme: dark) {
-  .certification-item {
-    background: var(--color-gray-800);
-    border-color: var(--color-gray-700);
-    color: var(--color-gray-300);
-  }
-}
-
-.certification-icon {
-  color: var(--color-primary-500);
-  font-size: 1.25rem;
-  flex-shrink: 0;
-}
-
-/* Projects */
-.projects-grid {
+.contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
-.project-card {
-  background: var(--color-gray-50);
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-gray-200);
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
-}
-
-@media (prefers-color-scheme: dark) {
-  .project-card {
-    background: var(--color-gray-800);
-    border-color: var(--color-gray-700);
+@media (width >= 56rem) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 4rem;
   }
 }
 
-.project-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+.prose--lead {
+  max-width: 48rem;
+  color: var(--fg);
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.55;
 }
 
-.project-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--color-gray-900);
-  margin: 0 0 0.5rem;
+.prose {
+  max-width: 36rem;
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  font-size: 1.0625rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  .project-title {
-    color: var(--color-gray-50);
-  }
-}
-
-.project-description {
-  font-size: 0.9375rem;
-  color: var(--color-gray-700);
+.project-list {
   margin: 0;
-  line-height: 1.6;
+  padding: 0;
+  list-style: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  .project-description {
-    color: var(--color-gray-400);
+@media (width <= 640px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-block: 3rem;
+  }
+
+  .hero-photo {
+    grid-row: 1;
+    width: 112px;
+    height: 112px;
   }
 }
 
-/* Responsive */
-@media (width <= 768px) {
-  .hero-title {
-    font-size: 2rem;
+@media (prefers-reduced-motion: no-preference) {
+  /* The name is the LCP element: slide it in without ever hiding it. */
+  .hero-line {
+    animation: hero-slide 0.8s var(--ease-out) both;
   }
 
-  .hero-stats {
-    gap: 2rem;
+  .hero-role,
+  .hero-availability,
+  .hero-bio,
+  .hero-actions,
+  .hero-photo {
+    animation: hero-rise 0.8s var(--ease-out) both;
   }
 
-  .section-title {
-    font-size: 1.5rem;
+  .hero-line:nth-child(2) {
+    animation-delay: 0.08s;
   }
 
-  .timeline {
-    padding-left: 1.5rem;
+  .hero-role,
+  .hero-availability {
+    animation-delay: 0.16s;
   }
 
-  .timeline-item {
-    padding-left: 1rem;
+  .hero-bio {
+    animation-delay: 0.24s;
+  }
+
+  .hero-actions {
+    animation-delay: 0.32s;
+  }
+
+  .hero-photo {
+    animation-delay: 0.4s;
+    transition: filter 0.5s ease;
+  }
+}
+
+@keyframes hero-slide {
+  from {
+    transform: translateY(24px);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 </style>
