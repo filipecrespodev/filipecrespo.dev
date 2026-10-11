@@ -19,6 +19,12 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   compatibilityDate: "2024-04-03",
+  runtimeConfig: {
+    public: {
+      // Set NUXT_PUBLIC_CONTACT_FORM_ENDPOINT at build time (e.g. a Formspree URL).
+      contactFormEndpoint: "",
+    },
+  },
   ui: {
     colorMode: false,
   },
@@ -26,6 +32,7 @@ export default defineNuxtConfig({
     families: [
       { name: "Instrument Serif", provider: "google", weights: [400] },
       { name: "Inter", provider: "google", weights: [400, 500] },
+      { name: "JetBrains Mono", provider: "google", weights: [400, 500] },
     ],
   },
   i18n: {

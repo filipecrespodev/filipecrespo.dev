@@ -105,44 +105,76 @@ describe("home content", () => {
     );
   });
 
-  test("sections are numbered 01, 02, 03 in every locale", () => {
+  test("sections are numbered 01 to 06 in every locale", () => {
+    const ids = [
+      "about",
+      "services",
+      "process",
+      "projects",
+      "experience",
+      "contact",
+    ];
     for (const route of ["", "en", "es"]) {
       const html = page(route);
-      for (const id of ["about", "projects", "contact"]) {
+      for (const id of ids) {
         expect(html).toContain(`id="${id}"`);
       }
-      expect(html.indexOf(">01<")).toBeGreaterThan(-1);
-      expect(html.indexOf(">01<")).toBeLessThan(html.indexOf(">02<"));
-      expect(html.indexOf(">02<")).toBeLessThan(html.indexOf(">03<"));
+      const numbers = ["01", "02", "03", "04", "05", "06"].map((n) =>
+        html.indexOf(`>${n}<`)
+      );
+      expect(numbers[0]).toBeGreaterThan(-1);
+      expect(numbers).toEqual([...numbers].sort((a, b) => a - b));
     }
   });
 
-  test("Meus Prompts links out safely in a new tab", () => {
+  test("hero has a call to action pointing to the contact section", () => {
     const html = page("");
-    expect(html).toMatch(
-      /<a[^>]*href="https:\/\/meusprompts\.vercel\.app"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/
-    );
-    expect(html).toContain("(abre em nova aba)");
+    expect(html).toMatch(/<a[^>]*href="#contact"[^>]*class="button"/);
+    expect(html).toContain("Disponível para novos projetos");
   });
 
-  test("Brincaki renders without a link", () => {
+  test("work links out safely in a new tab", () => {
     const html = page("");
-    const at = html.indexOf("Brincaki</span>");
-    expect(at).toBeGreaterThan(-1);
-    const item = html.slice(
-      html.lastIndexOf("<li", at),
-      html.indexOf("</li>", at)
-    );
-    expect(item).not.toContain("<a ");
+    for (const url of [
+      "https://larabordalo.com",
+      "https://virginiaory.com",
+      "https://www.inlineprojetos.com",
+      "https://meusprompts.com.br",
+      "https://meus-prompts.github.io/brincaki/",
+    ]) {
+      expect(html).toMatch(
+        new RegExp(
+          `<a[^>]*href="${url.replace(/\./g, "\\.")}"[^>]*target="_blank"[^>]*rel="noopener noreferrer"`
+        )
+      );
+    }
+    expect(html).toContain("(abre em nova aba)");
     expect(html).not.toContain('href="undefined"');
+  });
+
+  test("experience lists past companies", () => {
+    const html = page("en");
+    for (const company of ["Facily", "Locaweb", "Novax Telecom"]) {
+      expect(html).toContain(company);
+    }
+  });
+
+  test("contact form only renders when an endpoint is configured", () => {
+    const html = page("");
+    if (process.env.NUXT_PUBLIC_CONTACT_FORM_ENDPOINT) {
+      expect(html).toContain('class="contact-form');
+      expect(html).toContain('for="contact-email"');
+    } else {
+      expect(html).not.toContain('class="contact-form');
+    }
   });
 
   test("project descriptions are localized", () => {
     expect(page("en")).toContain(
-      "A platform to create, publish and share AI prompts"
+      "A platform to create, organize and share AI prompts"
     );
     expect(page("es")).toContain(
-      "Plataforma para crear, publicar y compartir prompts"
+      "Plataforma para crear, organizar y compartir prompts"
     );
   });
 
@@ -232,14 +264,14 @@ describe("scroll elements", () => {
   test("every section has a sticky eyebrow and decorative rule and ticks", () => {
     for (const route of ["", "en", "es"]) {
       const html = page(route);
-      expect(html.match(/class="section-eyebrow/g)?.length).toBe(3);
+      expect(html.match(/class="section-eyebrow/g)?.length).toBe(6);
       expect(
         html.match(/<span[^>]*aria-hidden="true"[^>]*class="section-rule/g)
           ?.length
-      ).toBe(3);
+      ).toBe(6);
       expect(
         html.match(/<span[^>]*aria-hidden="true"[^>]*class="tick\b/g)?.length
-      ).toBe(6);
+      ).toBe(12);
     }
     expect(builtCss()).toMatch(
       /\.section-eyebrow\[[^\]]+\]\{[^}]*position:\s*sticky/
@@ -293,5 +325,55 @@ describe("scroll elements", () => {
       "utf8"
     );
     expect(plugin).toContain("prefers-reduced-motion");
+  });
+});
+
+describe("terminal nav", () => {
+  const ids = [
+    "about",
+    "services",
+    "process",
+    "projects",
+    "experience",
+    "contact",
+  ];
+
+  for (const route of ["", "en", "es"]) {
+    test(`/${route} lists every section as a link`, () => {
+      const html = page(route);
+      const nav = html.slice(
+        html.indexOf('<aside class="term'),
+        html.indexOf("</aside>")
+      );
+      for (const id of ids) {
+        expect(nav).toMatch(
+          new RegExp(`<a[^>]*href="#${id}"[^>]*class="term-link`)
+        );
+      }
+      expect(nav).toMatch(/<nav[^>]*aria-label="[^"]+"/);
+    });
+  }
+
+  test("first section starts as current and slugs drop accents", () => {
+    const html = page("");
+    expect(html).toMatch(/href="#about"[^>]*aria-current="true"/);
+    expect(html).toContain("servicos/");
+    expect(html).toContain("como-trabalho/");
+  });
+
+  test("decorative terminal parts are hidden from screen readers", () => {
+    const html = page("");
+    for (const cls of [
+      "term-bar",
+      "term-status",
+      "term-gutter",
+      "term-progress",
+    ]) {
+      expect(html).toMatch(
+        new RegExp(
+          `class="${cls}"[^>]*aria-hidden="true"|aria-hidden="true"[^>]*class="${cls}"`
+        )
+      );
+    }
   });
 });

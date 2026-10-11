@@ -1,17 +1,21 @@
 {
   "meta": {
     "title": "Filipe Crespo — Software Engineer",
-    "description": "Software engineer with 10+ years of experience. I build simple, useful web products like Meus Prompts and Brincaki."
+    "description": "Software engineer with 10+ years of experience. I build websites, systems and integrations for agencies and businesses."
   },
   "a11y": {
     "skip": "Skip to content",
     "language": "Language",
     "newTab": "(opens in a new tab)",
-    "social": "Social links"
+    "social": "Social links",
+    "sections": "Page sections"
   },
   "hero": {
     "role": "Software Engineer",
-    "bio": "Father, husband and software engineer for over 10 years. I like turning ideas into simple, useful, well-crafted products.",
+    "availability": "Available for new projects",
+    "bio": "10+ years building web products, from e-commerce to healthtech. I build websites, systems and integrations for agencies and businesses, with clear communication and on-time delivery.",
+    "cta": "Let's talk",
+    "ctaSecondary": "See my work",
     "photoAlt": "Black and white portrait of Filipe Soares Crespo"
   },
   "marquee": {
@@ -20,27 +24,115 @@
   },
   "about": {
     "label": "About",
-    "title": "Engineering, product and community.",
-    "body": "I started building web systems with PHP and Laravel and now work with TypeScript, Vue and software architecture. I have spoken at PHP Summit and TheDevConference, and I enjoy sharing what I learn while building products end to end."
+    "title": "End-to-end engineering.",
+    "body": "I have led teams, designed architectures and shipped products at companies like Facily and Locaweb. Today I am part of the founding team of a healthtech. I work with any stack: TypeScript, Vue, React, Node.js, Python, PHP/Laravel, Ruby and cloud. I have spoken at PHP Summit and TheDevConference."
+  },
+  "services": {
+    "label": "Services",
+    "title": "How I can help.",
+    "items": {
+      "agencies": {
+        "name": "Technical partner for agencies",
+        "description": "White-label development: the agency keeps the client relationship and I deliver websites, systems and integrations on time."
+      },
+      "web": {
+        "name": "Websites and web platforms",
+        "description": "Company websites, portfolios, e-commerce and custom systems that are fast, accessible and easy to maintain."
+      },
+      "automation": {
+        "name": "Integrations and AI automation",
+        "description": "I connect your business tools, automate repetitive work and put AI to work in your day-to-day."
+      }
+    }
+  },
+  "process": {
+    "label": "How I work",
+    "title": "Simple and predictable.",
+    "items": {
+      "briefing": {
+        "name": "Written brief",
+        "description": "You tell me what you need and I ask the right questions to understand the problem."
+      },
+      "proposal": {
+        "name": "Fixed proposal",
+        "description": "Scope, timeline and price agreed before we start. No surprises."
+      },
+      "delivery": {
+        "name": "Weekly deliveries",
+        "description": "You follow progress through working versions, not promises."
+      },
+      "support": {
+        "name": "Ongoing support",
+        "description": "After launch, monthly maintenance keeps everything running."
+      }
+    }
   },
   "projects": {
-    "label": "Projects",
-    "title": "What I'm building.",
+    "label": "Work",
+    "title": "Recent work.",
     "items": {
+      "larabordalo": {
+        "description": "Portfolio for an illustrator and children's book author.",
+        "status": "Client"
+      },
+      "inline": {
+        "description": "Multi-tenant IoT monitoring SaaS for industry: FastAPI back-end, Vue 3 dashboard and Flutter app, replacing a legacy PHP system.",
+        "status": "Client"
+      },
       "meusprompts": {
-        "description": "A platform to create, publish and share AI prompts, with metrics and a community.",
-        "status": "Live"
+        "description": "A platform to create, organize and share AI prompts.",
+        "status": "Own product"
       },
       "brincaki": {
-        "description": "A new project in the works. More details soon.",
-        "status": "Coming soon"
+        "description": "Free Android app with 8 Portuguese-language games for kids and adults, with no ads and no data collection.",
+        "status": "Own product"
+      },
+      "virginiaory": {
+        "description": "Portfolio for an illustrator, built with Astro and Cloudflare Workers.",
+        "status": "Client"
+      }
+    }
+  },
+  "experience": {
+    "label": "Experience",
+    "title": "Where I have worked.",
+    "items": {
+      "saudetrevo": {
+        "role": "Founding Team",
+        "summary": "Founding team of a healthtech: a product built from scratch with Python and Vue."
+      },
+      "facily": {
+        "role": "Tech Lead",
+        "summary": "Led the e-commerce rebuild: cart, coupons, Oracle-integrated inventory and microservices on AWS Lambda and Kafka."
+      },
+      "locaweb": {
+        "role": "Senior Software Engineer",
+        "summary": "Multitenant e-mail back-end architecture and provisioning integrated with Google Workspace and Microsoft 365."
+      },
+      "novax": {
+        "role": "Software Developer",
+        "summary": "PBX, speech analytics and a virtual agent with natural language processing; moved the core product to the cloud."
+      },
+      "bc": {
+        "role": "Software Developer",
+        "summary": "Websites, apps and e-commerce for small businesses, from requirements to delivery."
       }
     }
   },
   "contact": {
     "label": "Contact",
     "title": "Let's talk.",
-    "body": "Open to conversations about product, engineering and new ideas. Find me on the links below."
+    "body": "Tell me a bit about your project. I reply within 2 business days.",
+    "linkedin": "Prefer LinkedIn? Send me a message there.",
+    "form": {
+      "name": "Name",
+      "email": "E-mail",
+      "message": "About the project",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "success": "Message sent. Thank you! I will get back to you soon.",
+      "error": "Could not send. Please try again or reach me on LinkedIn."
+    }
   },
   "footer": {
     "backToTop": "Back to top"

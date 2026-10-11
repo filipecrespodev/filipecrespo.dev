@@ -1,17 +1,21 @@
 {
   "meta": {
     "title": "Filipe Crespo — Engenheiro de Software",
-    "description": "Engenheiro de software há mais de 10 anos. Construo produtos web simples e úteis, como o Meus Prompts e o Brincaki."
+    "description": "Engenheiro de software com mais de 10 anos de experiência. Desenvolvo sites, sistemas e integrações para agências e empresas."
   },
   "a11y": {
     "skip": "Pular para o conteúdo",
     "language": "Idioma",
     "newTab": "(abre em nova aba)",
-    "social": "Redes sociais"
+    "social": "Redes sociais",
+    "sections": "Seções da página"
   },
   "hero": {
     "role": "Engenheiro de Software",
-    "bio": "Pai, marido e engenheiro de software há mais de 10 anos. Gosto de transformar ideias em produtos simples, úteis e bem feitos.",
+    "availability": "Disponível para novos projetos",
+    "bio": "Mais de 10 anos construindo produtos web, de e-commerce a healthtech. Desenvolvo sites, sistemas e integrações para agências e empresas, com comunicação clara e entrega no prazo.",
+    "cta": "Vamos conversar",
+    "ctaSecondary": "Ver trabalhos",
     "photoAlt": "Retrato em preto e branco de Filipe Soares Crespo"
   },
   "marquee": {
@@ -20,27 +24,115 @@
   },
   "about": {
     "label": "Sobre",
-    "title": "Engenharia, produto e comunidade.",
-    "body": "Comecei construindo sistemas web com PHP e Laravel e hoje trabalho com TypeScript, Vue e arquitetura de software. Já palestrei no PHP Summit e no TheDevConference, e gosto de compartilhar o que aprendo construindo produtos de ponta a ponta."
+    "title": "Engenharia de ponta a ponta.",
+    "body": "Já liderei times, desenhei arquiteturas e entreguei produtos em empresas como Facily e Locaweb. Hoje faço parte do time fundador de uma healthtech. Trabalho com qualquer stack: TypeScript, Vue, React, Node.js, Python, PHP/Laravel, Ruby e cloud. Já palestrei no PHP Summit e no TheDevConference."
+  },
+  "services": {
+    "label": "Serviços",
+    "title": "Como posso ajudar.",
+    "items": {
+      "agencies": {
+        "name": "Parceiro técnico para agências",
+        "description": "Desenvolvimento white-label: a agência fica com a relação com o cliente e eu entrego sites, sistemas e integrações no prazo."
+      },
+      "web": {
+        "name": "Sites e plataformas web",
+        "description": "Sites institucionais, portfólios, e-commerce e sistemas sob medida, rápidos, acessíveis e fáceis de manter."
+      },
+      "automation": {
+        "name": "Integrações e automações com IA",
+        "description": "Conecto as ferramentas do negócio, automatizo processos repetitivos e coloco a IA para trabalhar no dia a dia."
+      }
+    }
+  },
+  "process": {
+    "label": "Como trabalho",
+    "title": "Simples e previsível.",
+    "items": {
+      "briefing": {
+        "name": "Briefing por escrito",
+        "description": "Você conta o que precisa e eu faço as perguntas certas para entender o problema."
+      },
+      "proposal": {
+        "name": "Proposta fechada",
+        "description": "Escopo, prazo e preço definidos antes de começar. Sem surpresas."
+      },
+      "delivery": {
+        "name": "Entregas semanais",
+        "description": "Você acompanha o progresso com versões funcionando, não com promessas."
+      },
+      "support": {
+        "name": "Suporte contínuo",
+        "description": "Depois do lançamento, manutenção mensal para manter tudo funcionando."
+      }
+    }
   },
   "projects": {
-    "label": "Projetos",
-    "title": "O que estou construindo.",
+    "label": "Trabalhos",
+    "title": "Trabalhos recentes.",
     "items": {
+      "larabordalo": {
+        "description": "Portfólio de uma ilustradora e autora de livros infantis.",
+        "status": "Cliente"
+      },
+      "inline": {
+        "description": "Plataforma SaaS multi-tenant de monitoramento IoT para indústrias: API em FastAPI, painel em Vue 3 e app em Flutter, substituindo o sistema legado em PHP.",
+        "status": "Cliente"
+      },
       "meusprompts": {
-        "description": "Plataforma para criar, publicar e compartilhar prompts de IA, com métricas e comunidade.",
-        "status": "No ar"
+        "description": "Plataforma para criar, organizar e compartilhar prompts de IA.",
+        "status": "Produto próprio"
       },
       "brincaki": {
-        "description": "Novo projeto em construção. Mais detalhes em breve.",
-        "status": "Em breve"
+        "description": "App Android gratuito com 8 jogos em português para crianças e adultos, sem anúncios e sem coleta de dados.",
+        "status": "Produto próprio"
+      },
+      "virginiaory": {
+        "description": "Portfólio de uma ilustradora, feito com Astro e Cloudflare Workers.",
+        "status": "Cliente"
+      }
+    }
+  },
+  "experience": {
+    "label": "Experiência",
+    "title": "Onde já trabalhei.",
+    "items": {
+      "saudetrevo": {
+        "role": "Founding Team",
+        "summary": "Time fundador de uma healthtech: produto construído do zero com Python e Vue."
+      },
+      "facily": {
+        "role": "Tech Lead",
+        "summary": "Liderei a reestruturação do e-commerce: carrinho, cupons, estoque integrado ao Oracle e microsserviços com AWS Lambda e Kafka."
+      },
+      "locaweb": {
+        "role": "Senior Software Engineer",
+        "summary": "Arquitetura multitenant do back-end de e-mail e provisionamento integrado ao Google Workspace e ao Microsoft 365."
+      },
+      "novax": {
+        "role": "Desenvolvedor de software",
+        "summary": "PABX, speech analytics e agente virtual com processamento de linguagem natural; migração do produto principal para a cloud."
+      },
+      "bc": {
+        "role": "Desenvolvedor de software",
+        "summary": "Sites, aplicativos e e-commerce para pequenas empresas, do levantamento de requisitos à entrega."
       }
     }
   },
   "contact": {
     "label": "Contato",
     "title": "Vamos conversar.",
-    "body": "Aberto a conversas sobre produto, engenharia e novas ideias. Me encontre nas redes abaixo."
+    "body": "Conte um pouco sobre o seu projeto. Respondo em até 2 dias úteis.",
+    "linkedin": "Prefere o LinkedIn? Me mande uma mensagem por lá.",
+    "form": {
+      "name": "Nome",
+      "email": "E-mail",
+      "message": "Sobre o projeto",
+      "submit": "Enviar mensagem",
+      "sending": "Enviando…",
+      "success": "Mensagem enviada. Obrigado! Respondo em breve.",
+      "error": "Não foi possível enviar. Tente de novo ou fale comigo pelo LinkedIn."
+    }
   },
   "footer": {
     "backToTop": "Voltar ao topo"

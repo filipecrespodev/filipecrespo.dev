@@ -25,4 +25,6 @@ Se o puppeteer não encontrar o Chrome, use o do sistema:
 ## Conteúdo
 
 - Textos: `i18n/locales/{pt-BR,en,es}.json` (as três precisam ter as mesmas chaves).
-- Projetos: `app/data/projects.ts` + `projects.items.<id>` em cada locale.
+- Trabalhos: `app/data/projects.ts` + `projects.items.<id>` em cada locale.
+- Experiência: `app/data/experience.ts` + `experience.items.<id>` em cada locale.
+- Formulário de contato: defina `NUXT_PUBLIC_CONTACT_FORM_ENDPOINT` (ex.: Formspree) no build. Sem ele, o formulário não aparece.
